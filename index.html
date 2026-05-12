@@ -3,201 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isa Seyitmurat — Engineer & Builder</title>
+<title>Isa Seyitmurat — Technical Engineer & CEO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#02040a;--surface:#070d1c;--surface2:#0b1328;
-  --c1:#00ffe0;--c2:#ff3c6e;--c3:#4f6fff;
-  --text:#dce8f0;--muted:#4a6070;--border:rgba(0,255,224,0.1);
-  --glow:0 0 60px rgba(0,255,224,0.2);
-  --fd:'Bebas Neue',sans-serif;--fb:'Outfit',sans-serif;--fm:'JetBrains Mono',monospace;
+  --bg:#07080F;--s1:#0C0F1D;--s2:#111525;
+  --c1:#00F0B5;--c2:#FF2D6B;--c3:#7B5CF5;
+  --text:#E2EAF0;--muted:#4A5F70;
+  --border:rgba(0,240,181,0.1);
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'Space Grotesk',sans-serif;
+  --fm:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--c1) var(--bg)}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--c1)}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none}
 
+/* CURSOR */
 #cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;top:0;left:0;will-change:transform}
-#cur{width:8px;height:8px;background:var(--c1);box-shadow:0 0 16px var(--c1)}
-#cur2{width:32px;height:32px;border:1px solid rgba(0,255,224,.35)}
+#cur{width:8px;height:8px;background:var(--c1);box-shadow:0 0 20px var(--c1)}
+#cur2{width:36px;height:36px;border:1px solid rgba(0,240,181,.3);transition:width .2s,height .2s,border-color .2s}
 
-#bgc{position:fixed;inset:0;z-index:0;opacity:.65}
+/* BG */
+#bgc{position:fixed;inset:0;z-index:0;opacity:.5}
+.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;animation:orb-float 12s ease-in-out infinite}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(0,240,181,.07),transparent 70%);top:-250px;right:-150px;animation-delay:0s}
+.orb2{width:600px;height:600px;background:radial-gradient(circle,rgba(123,92,245,.08),transparent 70%);bottom:-200px;left:-150px;animation-delay:-4s}
+.orb3{width:500px;height:500px;background:radial-gradient(circle,rgba(255,45,107,.05),transparent 70%);top:40%;left:40%;animation-delay:-8s}
+@keyframes orb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:20px 64px;background:rgba(2,4,10,.8);
-  backdrop-filter:blur(24px);border-bottom:1px solid var(--border);
-}
-.logo{font-family:var(--fd);font-size:1.6rem;letter-spacing:4px;color:var(--c1);text-decoration:none}
-.nl{display:flex;gap:36px;list-style:none}
-.nl a{
-  font-family:var(--fm);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;
-  color:var(--muted);text-decoration:none;transition:color .3s;position:relative;padding-bottom:4px;
-}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 64px;background:rgba(7,8,15,.75);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--fd);font-size:1.9rem;letter-spacing:8px;color:var(--c1);text-decoration:none;transition:text-shadow .3s}
+.logo:hover{text-shadow:0 0 30px rgba(0,240,181,.5)}
+.nl{display:flex;gap:40px;list-style:none}
+.nl a{font-family:var(--fm);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;position:relative;padding-bottom:4px}
 .nl a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--c1);transition:width .3s}
 .nl a:hover{color:var(--c1)}.nl a:hover::after{width:100%}
-
-/* NAV RIGHT GROUP */
 .nav-right{display:flex;align-items:center;gap:16px}
-
-/* LANGUAGE TOGGLE */
-.lang-toggle{
-  display:flex;align-items:center;gap:0;
-  border:1px solid var(--border);overflow:hidden;
-  font-family:var(--fm);font-size:.6rem;letter-spacing:2px;
-}
-.lang-btn{
-  padding:9px 14px;background:transparent;color:var(--muted);
-  border:none;cursor:none;text-transform:uppercase;
-  transition:background .25s,color .25s;letter-spacing:2px;font-family:var(--fm);font-size:.6rem;
-}
+.lang-toggle{display:flex;border:1px solid var(--border);overflow:hidden}
+.lang-btn{padding:8px 14px;background:transparent;color:var(--muted);border:none;cursor:none;font-family:var(--fm);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;transition:background .25s,color .25s}
 .lang-btn.active{background:var(--c1);color:var(--bg)}
 .lang-btn:hover:not(.active){color:var(--c1)}
-
-.ncta{
-  font-family:var(--fm);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;
-  color:var(--bg);background:var(--c1);padding:10px 24px;text-decoration:none;cursor:none;
-  clip-path:polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px);
-  transition:box-shadow .3s;
-}
-.ncta:hover{box-shadow:var(--glow)}
-
+.ncta{font-family:var(--fm);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--c1);padding:10px 24px;text-decoration:none;clip-path:polygon(6px 0%,100% 0%,100% calc(100% - 6px),calc(100% - 6px) 100%,0% 100%,0% 6px);transition:box-shadow .3s}
+.ncta:hover{box-shadow:0 0 32px rgba(0,240,181,.4)}
 section{position:relative;z-index:1}
-.w{max-width:1160px;margin:0 auto;padding:0 64px}
+.w{max-width:1200px;margin:0 auto;padding:0 64px}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;align-items:center;padding:140px 64px 80px;max-width:1160px;margin:0 auto;position:relative;z-index:1}
-.hi{flex:1}
-.hbadge{
-  display:inline-flex;align-items:center;gap:10px;font-family:var(--fm);font-size:.62rem;
-  letter-spacing:3px;color:var(--c1);text-transform:uppercase;margin-bottom:28px;
-  border:1px solid var(--border);padding:8px 16px;animation:fu .7s .1s both;
-}
-.bdot{width:6px;height:6px;background:var(--c1);border-radius:50%;animation:blink 1.4s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.hn{font-family:var(--fd);font-size:clamp(5rem,12vw,10rem);line-height:.9;letter-spacing:2px;animation:fu .7s .25s both}
-.hn .ol{-webkit-text-stroke:1.5px var(--c1);color:transparent;display:block}
-.hr2{font-family:var(--fm);font-size:.78rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:24px;animation:fu .7s .4s both}
-.hd{font-size:1rem;color:var(--muted);line-height:1.9;max-width:480px;margin-top:24px;animation:fu .7s .55s both}
-.ha{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;animation:fu .7s .7s both}
-.btn{font-family:var(--fm);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;text-decoration:none;cursor:none;transition:all .3s;border:none;display:inline-block}
-.bf{background:var(--c1);color:var(--bg);clip-path:polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)}
-.bf:hover{box-shadow:var(--glow);transform:translateY(-2px)}
-.bg2{color:var(--c1);border:1px solid rgba(0,255,224,.3);background:transparent}
-.bg2:hover{background:rgba(0,255,224,.06);transform:translateY(-2px)}
-.hsc{display:flex;align-items:center;gap:12px;margin-top:72px;font-family:var(--fm);font-size:.6rem;letter-spacing:3px;color:var(--muted);animation:fu .7s .9s both}
-.sbar{width:48px;height:1px;background:linear-gradient(90deg,var(--c1),transparent)}
-#sw{position:absolute;right:64px;top:50%;transform:translateY(-50%);width:320px;height:320px;animation:fu 1s .6s both}
-#sc2{width:100%;height:100%}
+#hero{min-height:100vh;display:flex;align-items:center;gap:60px;padding:130px 64px 80px;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hi{flex:1;min-width:0}
+.hbadge{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.58rem;letter-spacing:3px;color:var(--c1);text-transform:uppercase;margin-bottom:32px;border:1px solid rgba(0,240,181,.2);padding:7px 18px;background:rgba(0,240,181,.04);animation:fu .6s .1s both}
+.bdot{width:5px;height:5px;background:var(--c1);border-radius:50%;animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.hn{font-family:var(--fd);font-size:clamp(5rem,10vw,9.5rem);line-height:.88;letter-spacing:2px;margin-bottom:28px;animation:fu .7s .2s both}
+.hn .l1{display:block;color:var(--text)}
+.hn .l2{display:block;-webkit-text-stroke:1.5px var(--c1);color:transparent}
+.hn .l3{display:block;color:var(--text)}
+.hsub{font-family:var(--fm);font-size:.7rem;letter-spacing:4px;color:var(--c1);text-transform:uppercase;margin-bottom:20px;animation:fu .7s .33s both}
+.hd{font-size:.98rem;color:var(--muted);line-height:1.9;max-width:460px;margin-bottom:38px;font-weight:400;animation:fu .7s .45s both}
+.ha{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;animation:fu .7s .55s both}
+.btn{font-family:var(--fm);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;padding:13px 30px;text-decoration:none;transition:all .3s;display:inline-block}
+.btn-p{background:var(--c1);color:var(--bg);clip-path:polygon(6px 0%,100% 0%,100% calc(100% - 6px),calc(100% - 6px) 100%,0% 100%,0% 6px)}
+.btn-p:hover{box-shadow:0 0 40px rgba(0,240,181,.35);transform:translateY(-2px)}
+.btn-g{color:var(--c1);border:1px solid rgba(0,240,181,.25);background:transparent}
+.btn-g:hover{background:rgba(0,240,181,.06);transform:translateY(-2px)}
+.hstats{display:flex;gap:36px;flex-wrap:wrap;animation:fu .7s .7s both}
+.hstat .num{font-family:var(--fd);font-size:2.6rem;color:var(--c1);line-height:1}
+.hstat .lbl{font-family:var(--fm);font-size:.52rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:4px}
 
-.stag{font-family:var(--fm);font-size:.62rem;letter-spacing:4px;color:var(--c1);text-transform:uppercase;margin-bottom:12px}
-.sh{font-family:var(--fd);font-size:clamp(2.8rem,5vw,5rem);letter-spacing:2px;line-height:1}
+/* HERO PHOTO */
+.hphoto{width:360px;flex-shrink:0;position:relative;animation:fu 1s .4s both}
+.hphoto img{width:100%;height:480px;object-fit:cover;object-position:center top;display:block;clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,24px 100%,0 calc(100% - 24px));filter:contrast(1.05) saturate(1.08)}
+.hphoto::before{content:'';position:absolute;inset:-2px;clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,24px 100%,0 calc(100% - 24px));background:linear-gradient(135deg,var(--c1),var(--c3));z-index:-1;opacity:.55}
+.hphoto::after{content:'';position:absolute;top:18px;left:18px;right:-18px;bottom:-18px;border:1px solid rgba(0,240,181,.12);clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,24px 100%,0 calc(100% - 24px));z-index:-2}
+.hphoto-tag{position:absolute;bottom:-14px;left:20px;background:var(--s1);border:1px solid var(--border);padding:10px 18px;font-family:var(--fm);font-size:.58rem;letter-spacing:2px;color:var(--c1);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+
+/* TICKER */
+.ticker-wrap{position:relative;z-index:1;padding:18px 0;background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.ticker-row{display:flex;overflow:hidden;padding:6px 0}
+.ticker-track{display:flex;flex-shrink:0;animation:tick 26s linear infinite}
+.ticker-track.rev{animation-direction:reverse;animation-duration:20s}
+.tki{font-family:var(--fm);font-size:.58rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;padding:0 28px;display:flex;align-items:center;gap:0;white-space:nowrap}
+.tki::after{content:'·';color:var(--c1);margin-left:28px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION HEADER */
+.stag{font-family:var(--fm);font-size:.58rem;letter-spacing:4px;color:var(--c1);text-transform:uppercase;margin-bottom:10px}
+.sh{font-family:var(--fd);font-size:clamp(2.6rem,4.5vw,4.5rem);letter-spacing:2px;line-height:1;margin-bottom:60px}
+.sh .ol{-webkit-text-stroke:1.5px var(--c1);color:transparent}
 
 /* ABOUT */
 #about{padding:140px 0}
-.ag{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:56px}
-.at p{font-size:.9rem;line-height:1.95;color:var(--muted);margin-bottom:18px}
-.at strong{color:var(--text)}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.at p{font-size:.93rem;line-height:1.9;color:var(--muted);margin-bottom:18px;font-weight:400}
+.at p strong{color:var(--text);font-weight:600}
 .lc{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
-.chip{font-family:var(--fm);font-size:.6rem;letter-spacing:2px;padding:6px 14px;border:1px solid var(--border);color:var(--c1);text-transform:uppercase}
-.sc{display:flex;flex-direction:column;gap:20px}
-.sphoto{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;filter:grayscale(20%) contrast(1.05);border:1px solid var(--border);display:block}
-.sphoto-wrap{position:relative;overflow:hidden}
-.sphoto-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,255,224,0.06) 0%,transparent 60%);pointer-events:none}
-.sr{display:flex;align-items:center;gap:24px;padding:24px 28px;background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
-.sr::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c1);transform:scaleY(0);transition:transform .4s}
-.sr:hover{border-color:var(--c1);transform:translateX(6px)}.sr:hover::before{transform:scaleY(1)}
-.sn{font-family:var(--fd);font-size:3rem;color:var(--c1);line-height:1;min-width:80px}
-.sl{font-size:.72rem;color:var(--muted);letter-spacing:1px;line-height:1.5}
+.chip{font-family:var(--fm);font-size:.58rem;letter-spacing:2px;padding:7px 16px;border:1px solid var(--border);color:var(--c1);text-transform:uppercase;background:rgba(0,240,181,.04)}
+.aright{display:flex;flex-direction:column;gap:3px}
+.astat{background:var(--s1);border:1px solid var(--border);padding:26px 30px;display:flex;align-items:center;gap:22px;transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.astat::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--c1),var(--c3));transform:scaleY(0);transition:transform .4s}
+.astat:hover{border-color:var(--c1);transform:translateX(8px)}.astat:hover::before{transform:scaleY(1)}
+.astat .num{font-family:var(--fd);font-size:3.2rem;color:var(--c1);line-height:1;min-width:80px}
+.astat .lbl{font-family:var(--fb);font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:400}
 
 /* SKILLS */
 #skills{padding:0 0 140px}
-.skw{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:56px}
-@media(max-width:1100px){.skw{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){.skw{grid-template-columns:1fr 1fr}}
-.skc{background:var(--surface);padding:32px 28px;border:1px solid var(--border);transition:background .3s,border-color .3s}
-.skc:hover{background:var(--surface2);border-color:rgba(0,255,224,.25)}
-.skt{font-family:var(--fm);font-size:.6rem;letter-spacing:3px;color:var(--c1);text-transform:uppercase;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:20px}
-.ski{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);padding:5px 0;transition:color .3s}
-.ski:hover{color:var(--text)}.ski::before{content:'›';color:var(--c1);font-size:1rem}
+.skgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:0}
+.skcard{background:var(--s1);border:1px solid var(--border);padding:28px 22px;transition:background .3s,border-color .3s,transform .3s}
+.skcard:hover{background:var(--s2);border-color:rgba(0,240,181,.25);transform:translateY(-4px)}
+.skicon{width:34px;height:34px;background:rgba(0,240,181,.08);border:1px solid rgba(0,240,181,.15);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.skicon svg{width:16px;height:16px;stroke:var(--c1);fill:none;stroke-width:1.5}
+.skt{font-family:var(--fm);font-size:.56rem;letter-spacing:3px;color:var(--c1);text-transform:uppercase;padding-bottom:14px;border-bottom:1px solid var(--border);margin-bottom:14px}
+.ski{display:flex;align-items:center;gap:7px;font-size:.76rem;color:var(--muted);padding:4px 0;transition:color .3s;font-weight:400}
+.ski:hover{color:var(--text)}.ski::before{content:'›';color:var(--c1);font-size:.85rem;flex-shrink:0}
 
 /* EXPERIENCE */
 #experience{padding:140px 0}
-.eg{margin-top:56px;display:flex;flex-direction:column;gap:3px}
-.ec{background:var(--surface);border:1px solid var(--border);display:grid;grid-template-columns:200px 1fr;transition:border-color .3s;overflow:hidden}
-.ec:hover{border-color:rgba(0,255,224,.3)}
-.el{padding:32px 28px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between}
-.ep{font-family:var(--fm);font-size:.6rem;letter-spacing:2px;color:var(--c1);text-transform:uppercase;line-height:1.7}
-.eco{font-family:var(--fd);font-size:1.5rem;letter-spacing:1px;margin-top:auto;padding-top:16px}
-.er2{padding:32px 36px}
-.ero{font-family:var(--fm);font-size:.65rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:20px}
-.ebl{list-style:none;display:flex;flex-direction:column;gap:8px}
-.ebl li{font-size:.82rem;color:var(--muted);padding-left:18px;position:relative;line-height:1.7}
-.ebl li::before{content:'—';position:absolute;left:0;color:var(--c1);font-size:.7rem}
+.etl{display:flex;flex-direction:column;gap:3px}
+.ecard{background:var(--s1);border:1px solid var(--border);display:grid;grid-template-columns:210px 1fr;transition:border-color .3s;overflow:hidden;position:relative}
+.ecard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--c1),var(--c3));opacity:0;transition:opacity .4s}
+.ecard:hover{border-color:rgba(0,240,181,.3)}.ecard:hover::before{opacity:1}
+.eleft{padding:30px 26px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between}
+.eperiod{font-family:var(--fm);font-size:.56rem;letter-spacing:2px;color:var(--c1);text-transform:uppercase;line-height:1.8}
+.epromote{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-family:var(--fm);font-size:.52rem;letter-spacing:1px;color:var(--c2);border:1px solid rgba(255,45,107,.3);padding:4px 10px;background:rgba(255,45,107,.05);text-transform:uppercase}
+.eco{font-family:var(--fd);font-size:1.5rem;letter-spacing:1px;margin-top:auto;padding-top:18px;line-height:1.1;color:var(--text)}
+.eright{padding:30px 34px}
+.erole{font-family:var(--fm);font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.erole::after{content:'';flex:1;height:1px;background:var(--border)}
+.ebl{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ebl li{font-size:.83rem;color:var(--muted);padding-left:20px;position:relative;line-height:1.75;font-weight:400}
+.ebl li::before{content:'—';position:absolute;left:0;color:var(--c1);font-size:.68rem;top:4px}
 
 /* PROJECTS */
 #projects{padding:0 0 140px}
-.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:56px}
-.pc{background:var(--surface);border:1px solid var(--border);padding:40px;position:relative;overflow:hidden;transition:border-color .4s,transform .4s;cursor:none;display:flex;flex-direction:column;gap:16px}
-.pc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,255,224,.04) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+.pc{background:var(--s1);border:1px solid var(--border);padding:40px;position:relative;overflow:hidden;transition:border-color .4s,transform .3s;display:flex;flex-direction:column;gap:16px}
+.pc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,240,181,.04) 0%,transparent 60%);opacity:0;transition:opacity .4s}
 .pc:hover{border-color:var(--c1);transform:translateY(-4px)}.pc:hover::before{opacity:1}
-.pc.ft{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.pnum{font-family:var(--fd);font-size:4rem;color:rgba(0,255,224,.08);line-height:1;position:absolute;top:20px;right:28px}
+.pc.feat{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.pnum{font-family:var(--fd);font-size:5rem;color:rgba(0,240,181,.05);line-height:1;position:absolute;top:14px;right:22px;pointer-events:none}
 .ptags{display:flex;gap:8px;flex-wrap:wrap}
-.ptag{font-family:var(--fm);font-size:.55rem;letter-spacing:2px;padding:4px 10px;border:1px solid rgba(0,255,224,.2);color:var(--c1);text-transform:uppercase}
-.pn{font-family:var(--fd);font-size:2.2rem;letter-spacing:1px;line-height:1.1}
-.pd{font-size:.82rem;color:var(--muted);line-height:1.8}
-.pf{list-style:none}
-.pf li{font-family:var(--fm);font-size:.7rem;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
-.pf li::before{content:'✦';color:var(--c1);font-size:.5rem}
-.pl{display:inline-flex;align-items:center;gap:8px;margin-top:auto;font-family:var(--fm);font-size:.62rem;letter-spacing:2px;color:var(--c1);text-decoration:none;text-transform:uppercase;transition:gap .3s}
-.pl:hover{gap:14px}
-.ps{font-family:var(--fm);font-size:.55rem;letter-spacing:2px;color:var(--c2);border:1px solid rgba(255,60,110,.3);padding:4px 10px;display:inline-block;text-transform:uppercase;animation:pr 2s infinite}
+.ptag{font-family:var(--fm);font-size:.52rem;letter-spacing:2px;padding:4px 10px;border:1px solid rgba(0,240,181,.2);color:var(--c1);text-transform:uppercase}
+.ptag-live{border-color:rgba(0,240,181,.4);background:rgba(0,240,181,.06)}
+.ptag-wip{border-color:rgba(255,45,107,.3);color:var(--c2);animation:pr 2s infinite}
+.ptag-pur{border-color:rgba(123,92,245,.3);color:var(--c3)}
 @keyframes pr{0%,100%{opacity:1}50%{opacity:.4}}
+.pn{font-family:var(--fd);font-size:2.3rem;letter-spacing:1px;line-height:1.1}
+.pd{font-size:.83rem;color:var(--muted);line-height:1.85;font-weight:400}
+.pf{list-style:none}
+.pf li{font-family:var(--fm);font-size:.66rem;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;letter-spacing:.3px}
+.pf li::before{content:'✦';color:var(--c1);font-size:.48rem;flex-shrink:0}
+.pl{display:inline-flex;align-items:center;gap:8px;margin-top:auto;font-family:var(--fm);font-size:.6rem;letter-spacing:2px;color:var(--c1);text-decoration:none;text-transform:uppercase;transition:gap .3s}
+.pl:hover{gap:16px}
 
 /* CONTACT */
 #contact{padding:140px 0}
-.ci{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:56px;align-items:start}
-.cb{font-family:var(--fd);font-size:clamp(3rem,6vw,6rem);letter-spacing:2px;line-height:.95;margin-bottom:28px}
-.cb span{-webkit-text-stroke:1px var(--c1);color:transparent}
-.cs{font-size:.88rem;color:var(--muted);line-height:1.9;max-width:380px}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.cbig{font-family:var(--fd);font-size:clamp(3.5rem,7vw,7rem);letter-spacing:2px;line-height:.9;margin-bottom:26px}
+.cbig .ol{-webkit-text-stroke:1.5px var(--c1);color:transparent}
+.csub{font-size:.9rem;color:var(--muted);line-height:1.9;max-width:380px;font-weight:400}
 .cls{display:flex;flex-direction:column;gap:3px}
-.cl{display:flex;align-items:center;gap:20px;padding:22px 28px;background:var(--surface);border:1px solid var(--border);color:var(--text);text-decoration:none;transition:all .3s;cursor:none}
+.cl{display:flex;align-items:center;gap:20px;padding:22px 28px;background:var(--s1);border:1px solid var(--border);color:var(--text);text-decoration:none;transition:all .3s}
 .cl:hover{border-color:var(--c1);padding-left:36px;color:var(--c1)}
-.ci2{width:36px;height:36px;background:rgba(0,255,224,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci2{width:38px;height:38px;background:rgba(0,240,181,.07);border:1px solid rgba(0,240,181,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ci2 svg{width:16px;height:16px;stroke:var(--c1);fill:none;stroke-width:1.5}
-.cla{font-family:var(--fm);font-size:.6rem;letter-spacing:2px;color:var(--c1);text-transform:uppercase}
-.clv{font-size:.82rem;color:var(--muted);margin-top:2px}
+.cla{font-family:var(--fm);font-size:.58rem;letter-spacing:2px;color:var(--c1);text-transform:uppercase}
+.clv{font-size:.8rem;color:var(--muted);margin-top:2px;font-weight:400}
 
-footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 64px;display:flex;justify-content:space-between;align-items:center}
-.fc{font-family:var(--fm);font-size:.6rem;letter-spacing:2px;color:var(--muted)}
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:30px 64px;display:flex;justify-content:space-between;align-items:center}
+.fc{font-family:var(--fm);font-size:.58rem;letter-spacing:2px;color:var(--muted)}
 .fl{display:flex;gap:24px}
-.fl a{font-family:var(--fm);font-size:.6rem;letter-spacing:2px;color:var(--muted);text-decoration:none;transition:color .3s}
+.fl a{font-family:var(--fm);font-size:.58rem;letter-spacing:2px;color:var(--muted);text-decoration:none;transition:color .3s}
 .fl a:hover{color:var(--c1)}
 
-/* LANG SWITCH FADE */
-[data-en],[data-tr]{transition:opacity .2s}
+/* GRAIN */
+body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.018}
 
-@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.rev{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+/* ANIMATIONS */
+@keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rev.in{opacity:1;transform:translateY(0)}
 .rev.d1{transition-delay:.1s}.rev.d2{transition-delay:.2s}.rev.d3{transition-delay:.3s}.rev.d4{transition-delay:.4s}
+[data-en],[data-tr]{transition:opacity .2s}
 
-body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.022}
-
+/* RESPONSIVE */
+@media(max-width:1100px){.skgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:960px){
+  #hero{flex-direction:column-reverse;padding:130px 40px 60px;gap:36px}
+  .hphoto{width:100%;max-width:320px;align-self:center}
+  .hphoto img{height:380px}
+  .ag,.cg{grid-template-columns:1fr}
+  .ecard{grid-template-columns:1fr}.eleft{border-right:none;border-bottom:1px solid var(--border)}
+  .pc.feat{grid-column:1;display:flex}.pg{grid-template-columns:1fr}
+}
 @media(max-width:768px){
-  nav{padding:16px 24px}.nl{display:none}
-  .nav-right{gap:10px}
-  #hero{padding:130px 24px 60px;flex-direction:column}.w{padding:0 24px}
-  .ag,.ci,.pc.ft{grid-template-columns:1fr}.pc.ft{grid-column:1}
-  .pg{grid-template-columns:1fr}.skw{grid-template-columns:1fr 1fr}
-  .ec{grid-template-columns:1fr}.el{border-right:none;border-bottom:1px solid var(--border)}
-  footer{flex-direction:column;gap:16px;text-align:center;padding:24px}#sw{display:none}
-  .ncta{display:none}
+  nav{padding:16px 24px}.nl{display:none}.nav-right{gap:10px}.ncta{display:none}
+  .w{padding:0 24px}.skgrid{grid-template-columns:1fr 1fr}
+  #hero{padding:110px 24px 60px}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:24px}
 }
 </style>
 </head>
@@ -205,9 +212,13 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 
 <div id="cur"></div><div id="cur2"></div>
 <canvas id="bgc"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
 
+<!-- NAV -->
 <nav>
-  <a class="logo" href="#">ISA.DEV</a>
+  <a class="logo" href="#">ISA</a>
   <ul class="nl">
     <li><a href="#about" data-en="About" data-tr="Hakkımda">About</a></li>
     <li><a href="#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
@@ -231,75 +242,88 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       <span class="bdot"></span>
       <span data-en="Open to new opportunities" data-tr="Yeni fırsatlara açığım">Open to new opportunities</span>
     </div>
-    <h1 class="hn">ISA<br><span class="ol">SEYITMURAT</span></h1>
-    <p class="hr2" data-en="Technical Engineer · CEO & Founder — Istanbul, Turkey" data-tr="Teknik Mühendis · CEO & Kurucu — İstanbul, Türkiye">Technical Engineer · CEO &amp; Founder — Istanbul, Turkey</p>
+    <h1 class="hn">
+      <span class="l1">ISA</span>
+      <span class="l2">SEYIT</span>
+      <span class="l3">MURAT</span>
+    </h1>
+    <p class="hsub" data-en="Technical Engineer · CEO & Founder" data-tr="Teknik Mühendis · CEO & Kurucu">Technical Engineer · CEO &amp; Founder</p>
     <p class="hd"
-      data-en="Seven years of unbroken growth — from hands-on hardware repair and Linux server engineering to building hospital-grade deployment tools, managing regional B2B sales across GCC and Turkey, and running a company as CEO."
-      data-tr="Yedi yıllık kesintisiz büyüme — saha donanım onarımından Linux sunucu mühendisliğine, hastane sınıfı kurulum araçları geliştirmeden GCC ve Türkiye'de bölgesel satış yönetimine ve CEO olarak şirket yönetimine kadar.">
-      Seven years of unbroken growth — from hands-on hardware repair and Linux server engineering to building hospital-grade deployment tools, managing regional B2B sales across GCC and Turkey, and running a company as CEO.
+      data-en="Seven years of unbroken growth — from Linux servers and hardware repair to building hospital-grade deployment tools, managing B2B sales across GCC &amp; Turkey, and running a company as CEO."
+      data-tr="Yedi yıllık kesintisiz büyüme — Linux sunucuları ve donanım onarımından, hastane sınıfı araçlar geliştirmeye, GCC ve Türkiye'de B2B satış yönetimine ve CEO olarak şirket yönetimine kadar.">
+      Seven years of unbroken growth — from Linux servers and hardware repair to building hospital-grade deployment tools, managing B2B sales across GCC &amp; Turkey, and running a company as CEO.
     </p>
     <div class="ha">
-      <a href="#projects" class="btn bf" data-en="View Projects" data-tr="Projeleri Gör">View Projects</a>
-      <a href="#contact" class="btn bg2" data-en="Get in Touch" data-tr="İletişime Geç">Get in Touch</a>
+      <a href="#projects" class="btn btn-p" data-en="View Work" data-tr="İşleri Gör">View Work</a>
+      <a href="#contact" class="btn btn-g" data-en="Get in Touch" data-tr="İletişime Geç">Get in Touch</a>
     </div>
-    <div class="hsc">
-      <div class="sbar"></div>
-      <span data-en="Scroll to explore" data-tr="Keşfetmek için kaydır">Scroll to explore</span>
+    <div class="hstats">
+      <div class="hstat"><div class="num">7+</div><div class="lbl" data-en="Years exp." data-tr="Yıl deneyim">Years exp.</div></div>
+      <div class="hstat"><div class="num">5</div><div class="lbl" data-en="Industries" data-tr="Sektör">Industries</div></div>
+      <div class="hstat"><div class="num">3</div><div class="lbl" data-en="Languages" data-tr="Dil">Languages</div></div>
+      <div class="hstat"><div class="num">6</div><div class="lbl" data-en="Projects" data-tr="Proje">Projects</div></div>
     </div>
   </div>
-  <div id="sw"><canvas id="sc2"></canvas></div>
+  <div class="hphoto">
+    <img src="Isa.jpeg" alt="Isa Seyitmurat">
+    <div class="hphoto-tag">
+      <span class="bdot"></span>
+      <span data-en="Istanbul, Turkey" data-tr="İstanbul, Türkiye">Istanbul, Turkey</span>
+    </div>
+  </div>
 </section>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-row">
+    <div class="ticker-track">
+      <span class="tki">Linux</span><span class="tki">Python</span><span class="tki">PostgreSQL</span><span class="tki">Grafana</span><span class="tki">AWS</span><span class="tki">n8n</span><span class="tki">Bash</span><span class="tki">Prometheus</span><span class="tki">Claude AI</span><span class="tki">REST APIs</span><span class="tki">SSH / VPN</span><span class="tki">Azure</span>
+      <span class="tki">Linux</span><span class="tki">Python</span><span class="tki">PostgreSQL</span><span class="tki">Grafana</span><span class="tki">AWS</span><span class="tki">n8n</span><span class="tki">Bash</span><span class="tki">Prometheus</span><span class="tki">Claude AI</span><span class="tki">REST APIs</span><span class="tki">SSH / VPN</span><span class="tki">Azure</span>
+    </div>
+  </div>
+  <div class="ticker-row" style="margin-top:2px">
+    <div class="ticker-track rev">
+      <span class="tki">B2B Sales</span><span class="tki">PowerShell</span><span class="tki">UPS Systems</span><span class="tki">Prompt Engineering</span><span class="tki">DBeaver</span><span class="tki">Log Analysis</span><span class="tki">AI Agents</span><span class="tki">Web Scraping</span><span class="tki">GCC Markets</span><span class="tki">LLM Workflows</span><span class="tki">Contract Negotiation</span><span class="tki">Windows Server</span>
+      <span class="tki">B2B Sales</span><span class="tki">PowerShell</span><span class="tki">UPS Systems</span><span class="tki">Prompt Engineering</span><span class="tki">DBeaver</span><span class="tki">Log Analysis</span><span class="tki">AI Agents</span><span class="tki">Web Scraping</span><span class="tki">GCC Markets</span><span class="tki">LLM Workflows</span><span class="tki">Contract Negotiation</span><span class="tki">Windows Server</span>
+    </div>
+  </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
 <div class="w">
   <div class="rev"><div class="stag" data-en="// 01 — About" data-tr="// 01 — Hakkımda">// 01 — About</div></div>
-  <div class="sh rev d1" data-en="WHO I AM" data-tr="BEN KİMİM">WHO I AM</div>
+  <div class="sh rev d1">WHO I <span class="ol">AM</span></div>
   <div class="ag">
     <div class="at rev d1">
       <p data-en="Engineer and entrepreneur who consistently delivers <strong>beyond the job description</strong>. Seven years of unbroken growth across healthcare tech, power systems, 3D printing, B2B sales, and event services."
          data-tr="İş tanımının ötesine sürekli olarak geçen mühendis ve girişimci. Sağlık teknolojisi, güç sistemleri, 3D baskı, B2B satış ve etkinlik hizmetleri alanlarında <strong>yedi yıllık kesintisiz büyüme</strong>.">
         Engineer and entrepreneur who consistently delivers <strong>beyond the job description</strong>. Seven years of unbroken growth across healthcare tech, power systems, 3D printing, B2B sales, and event services.
       </p>
-      <p data-en="I hold a B.Sc. in <strong>Electrical &amp; Electronics Engineering</strong> and am currently deepening my software side through a <strong>Computer Programming degree</strong> at Anadolu University."
-         data-tr="Elektrik &amp; Elektronik Mühendisliği lisans derecesine sahibim; şu anda Anadolu Üniversitesi'nde <strong>Bilgisayar Programcılığı</strong> alanında eğitimimi sürdürüyorum.">
-        I hold a B.Sc. in <strong>Electrical &amp; Electronics Engineering</strong> and am currently deepening my software side through a <strong>Computer Programming degree</strong> at Anadolu University.
+      <p data-en="I hold a B.Sc. in <strong>Electrical &amp; Electronics Engineering</strong> (Firat University) and am currently deepening my software side through a <strong>Computer Programming degree</strong> at Anadolu University."
+         data-tr="Fırat Üniversitesi'nde Elektrik &amp; Elektronik Mühendisliği lisans derecesine sahibim; şu anda Anadolu Üniversitesi'nde <strong>Bilgisayar Programcılığı</strong> alanında eğitimimi sürdürüyorum.">
+        I hold a B.Sc. in <strong>Electrical &amp; Electronics Engineering</strong> (Firat University) and am currently deepening my software side through a <strong>Computer Programming degree</strong> at Anadolu University.
       </p>
       <p data-en="Fluent in <strong>AI tools and prompt engineering</strong> — I actively build AI-assisted automation pipelines and n8n agent workflows. If a process is repetitive, I automate it."
-         data-tr="<strong>Yapay zeka araçları ve prompt mühendisliği</strong> konusunda akıcıyım — aktif olarak yapay zeka destekli otomasyon hatları ve n8n ajan iş akışları geliştiriyorum. Tekrarlayan süreçleri otomatize ediyorum.">
+         data-tr="<strong>Yapay zeka araçları ve prompt mühendisliği</strong> konusunda akıcıyım — aktif olarak yapay zeka destekli otomasyon hatları ve n8n ajan iş akışları geliştiriyorum.">
         Fluent in <strong>AI tools and prompt engineering</strong> — I actively build AI-assisted automation pipelines and n8n agent workflows. If a process is repetitive, I automate it.
       </p>
       <p data-en="I operate fluently in <strong>English, Turkish, and Arabic</strong> — technically and professionally."
-         data-tr="<strong>İngilizce, Türkçe ve Arapça</strong> dillerinde hem teknik hem de profesyonel düzeyde akıcı biçimde iletişim kuruyorum.">
+         data-tr="<strong>İngilizce, Türkçe ve Arapça</strong> dillerinde hem teknik hem de profesyonel düzeyde akıcıyım.">
         I operate fluently in <strong>English, Turkish, and Arabic</strong> — technically and professionally.
       </p>
       <div class="lc">
-        <span class="chip">🇬🇧 English</span>
-        <span class="chip">🇹🇷 Türkçe</span>
-        <span class="chip">🇸🇦 Arabic</span>
+        <span class="chip">🇬🇧 English — Fluent</span>
+        <span class="chip">🇹🇷 Türkçe — Native</span>
+        <span class="chip">🇸🇦 Arabic — Fluent</span>
       </div>
     </div>
-    <div class="sc">
-      <div class="sphoto-wrap rev d1">
-        <img src="Isa.jpeg" alt="Isa Seyitmurat" class="sphoto">
-      </div>
-      <div class="sr rev d2">
-        <div class="sn">7+</div>
-        <div class="sl" data-en="Years hands-on<br>engineering experience" data-tr="Yıl uygulamalı<br>mühendislik deneyimi">Years hands-on<br>engineering experience</div>
-      </div>
-      <div class="sr rev d3">
-        <div class="sn">5</div>
-        <div class="sl" data-en="Industries:<br>Healthcare · Power · 3D Print · Sales · Events" data-tr="Sektör:<br>Sağlık · Güç · 3D Baskı · Satış · Etkinlik">Industries:<br>Healthcare · Power · 3D Print · Sales · Events</div>
-      </div>
-      <div class="sr rev d4">
-        <div class="sn">3</div>
-        <div class="sl" data-en="Languages spoken<br>fluently" data-tr="Akıcı konuşulan<br>dil sayısı">Languages spoken<br>fluently</div>
-      </div>
-      <div class="sr rev d2">
-        <div class="sn">∞</div>
-        <div class="sl" data-en="Incidents diagnosed.<br>Systems restored." data-tr="Teşhis edilen olay.<br>Restore edilen sistem.">Incidents diagnosed.<br>Systems restored.</div>
-      </div>
+    <div class="aright">
+      <div class="astat rev d2"><div class="num">7+</div><div class="lbl" data-en="Years hands-on engineering experience" data-tr="Yıl uygulamalı mühendislik deneyimi">Years hands-on engineering experience</div></div>
+      <div class="astat rev d3"><div class="num">5</div><div class="lbl" data-en="Industries: Healthcare · Power · 3D Print · Sales · Events" data-tr="Sektör: Sağlık · Güç · 3D Baskı · Satış · Etkinlik">Industries: Healthcare · Power · 3D Print · Sales · Events</div></div>
+      <div class="astat rev d4"><div class="num">3</div><div class="lbl" data-en="Languages spoken fluently — EN · TR · AR" data-tr="Akıcı konuşulan dil — TR · EN · AR">Languages spoken fluently — EN · TR · AR</div></div>
+      <div class="astat rev d2"><div class="num">∞</div><div class="lbl" data-en="Incidents diagnosed. Systems restored." data-tr="Teşhis edilen olay. Restore edilen sistem.">Incidents diagnosed. Systems restored.</div></div>
     </div>
   </div>
 </div>
@@ -309,44 +333,32 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 <section id="skills">
 <div class="w">
   <div class="rev"><div class="stag" data-en="// Toolkit" data-tr="// Araçlarım">// Toolkit</div></div>
-  <div class="sh rev d1" data-en="STACK & SKILLS" data-tr="YETENEKLER">STACK &amp; SKILLS</div>
-  <div class="skw rev d2">
-    <div class="skc">
+  <div class="sh rev d1">STACK &amp; <span class="ol">SKILLS</span></div>
+  <div class="skgrid rev d2">
+    <div class="skcard">
+      <div class="skicon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
       <div class="skt" data-en="Systems & Cloud" data-tr="Sistemler & Bulut">Systems &amp; Cloud</div>
-      <div class="ski">Linux (Ubuntu)</div><div class="ski">PowerShell</div>
-      <div class="ski">Bash Scripting</div><div class="ski">SSH / VPN</div>
-      <div class="ski">AWS · Azure</div><div class="ski">Windows Server</div>
+      <div class="ski">Linux (Ubuntu)</div><div class="ski">PowerShell</div><div class="ski">Bash Scripting</div><div class="ski">SSH / VPN</div><div class="ski">AWS · Azure</div><div class="ski">Windows Server</div>
     </div>
-    <div class="skc">
+    <div class="skcard">
+      <div class="skicon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
       <div class="skt" data-en="Data & Monitoring" data-tr="Veri & İzleme">Data &amp; Monitoring</div>
-      <div class="ski">PostgreSQL</div><div class="ski">Grafana</div>
-      <div class="ski">Prometheus</div><div class="ski">DBeaver</div>
-      <div class="ski" data-en="Log Analysis" data-tr="Log Analizi">Log Analysis</div>
-      <div class="ski" data-en="Network Admin" data-tr="Ağ Yönetimi">Network Admin</div>
+      <div class="ski">PostgreSQL</div><div class="ski">Grafana</div><div class="ski">Prometheus</div><div class="ski">DBeaver</div><div class="ski" data-en="Log Analysis" data-tr="Log Analizi">Log Analysis</div><div class="ski" data-en="Network Admin" data-tr="Ağ Yönetimi">Network Admin</div>
     </div>
-    <div class="skc">
-      <div class="skt" data-en="Automation & Dev" data-tr="Otomasyon & Geliştirme">Automation &amp; Dev</div>
-      <div class="ski">Python</div><div class="ski">n8n</div>
-      <div class="ski">REST APIs</div><div class="ski" data-en="Web Scraping" data-tr="Web Kazıma">Web Scraping</div>
-      <div class="ski" data-en="Email Pipelines" data-tr="E-posta Hatları">Email Pipelines</div>
-      <div class="ski" data-en="Video Pipelines" data-tr="Video Hatları">Video Pipelines</div>
+    <div class="skcard">
+      <div class="skicon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div class="skt" data-en="Automation & Dev" data-tr="Otomasyon & Dev">Automation &amp; Dev</div>
+      <div class="ski">Python</div><div class="ski">n8n</div><div class="ski">REST APIs</div><div class="ski" data-en="Web Scraping" data-tr="Web Kazıma">Web Scraping</div><div class="ski" data-en="Email Pipelines" data-tr="E-posta Hatları">Email Pipelines</div><div class="ski" data-en="Video Pipelines" data-tr="Video Hatları">Video Pipelines</div>
     </div>
-    <div class="skc">
+    <div class="skcard">
+      <div class="skicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
       <div class="skt" data-en="AI & Prompt Eng." data-tr="Yapay Zeka & Prompt">AI &amp; Prompt Eng.</div>
-      <div class="ski">Claude · ChatGPT</div>
-      <div class="ski" data-en="Prompt Engineering" data-tr="Prompt Mühendisliği">Prompt Engineering</div>
-      <div class="ski" data-en="AI Agent Design" data-tr="Yapay Zeka Ajan Tasarımı">AI Agent Design</div>
-      <div class="ski" data-en="LLM Workflows" data-tr="LLM İş Akışları">LLM Workflows</div>
-      <div class="ski" data-en="AI Automation" data-tr="Yapay Zeka Otomasyonu">AI Automation</div>
+      <div class="ski">Claude · ChatGPT</div><div class="ski" data-en="Prompt Engineering" data-tr="Prompt Mühendisliği">Prompt Engineering</div><div class="ski" data-en="AI Agent Design" data-tr="AI Ajan Tasarımı">AI Agent Design</div><div class="ski" data-en="LLM Workflows" data-tr="LLM İş Akışları">LLM Workflows</div><div class="ski" data-en="AI Automation" data-tr="AI Otomasyonu">AI Automation</div>
     </div>
-    <div class="skc">
+    <div class="skcard">
+      <div class="skicon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
       <div class="skt" data-en="Business & Sales" data-tr="İş & Satış">Business &amp; Sales</div>
-      <div class="ski" data-en="B2B Sales" data-tr="B2B Satış">B2B Sales</div>
-      <div class="ski" data-en="Regional Management" data-tr="Bölgesel Yönetim">Regional Management</div>
-      <div class="ski">CRM</div>
-      <div class="ski" data-en="Technical Presales" data-tr="Teknik Satış Öncesi">Technical Presales</div>
-      <div class="ski" data-en="Account Management" data-tr="Hesap Yönetimi">Account Management</div>
-      <div class="ski" data-en="Contract Negotiation" data-tr="Sözleşme Müzakeresi">Contract Negotiation</div>
+      <div class="ski" data-en="B2B Sales" data-tr="B2B Satış">B2B Sales</div><div class="ski" data-en="Regional Management" data-tr="Bölgesel Yönetim">Regional Management</div><div class="ski">CRM</div><div class="ski" data-en="Technical Presales" data-tr="Teknik Satış Öncesi">Technical Presales</div><div class="ski" data-en="Account Management" data-tr="Hesap Yönetimi">Account Management</div><div class="ski" data-en="Contract Negotiation" data-tr="Sözleşme Müzakeresi">Contract Negotiation</div>
     </div>
   </div>
 </div>
@@ -356,51 +368,49 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 <section id="experience">
 <div class="w">
   <div class="rev"><div class="stag" data-en="// 02 — Experience" data-tr="// 02 — Deneyim">// 02 — Experience</div></div>
-  <div class="sh rev d1" data-en="WHERE I'VE WORKED" data-tr="ÇALIŞTIĞIM YERLER">WHERE I'VE WORKED</div>
-  <div class="eg">
+  <div class="sh rev d1">WHERE I'VE <span class="ol">WORKED</span></div>
+  <div class="etl">
 
-    <div class="ec rev d1">
-      <div class="el">
-        <div class="ep" data-en="Aug 2023<br>— Present" data-tr="Ağu 2023<br>— Günümüz">Aug 2023<br>— Present</div>
+    <div class="ecard rev d1">
+      <div class="eleft">
+        <div class="eperiod" data-en="Aug 2023<br>— Present" data-tr="Ağu 2023<br>— Günümüz">Aug 2023<br>— Present</div>
         <div class="eco">Ceiba<br>Healthcare</div>
       </div>
-      <div class="er2">
-        <div class="ero" data-en="Technical Support Engineer" data-tr="Teknik Destek Mühendisi">Technical Support Engineer</div>
+      <div class="eright">
+        <div class="erole" data-en="Technical Support Engineer" data-tr="Teknik Destek Mühendisi">Technical Support Engineer</div>
         <ul class="ebl">
-          <li data-en="Maintain and troubleshoot Linux (Ubuntu) production systems in a healthcare-critical environment — zero tolerance for downtime." data-tr="Sağlık açısından kritik ortamda Linux (Ubuntu) üretim sistemlerini yönetiyor ve sorun gideriyorum — kesintiye sıfır tolerans.">Maintain and troubleshoot Linux (Ubuntu) production systems in a healthcare-critical environment — zero tolerance for downtime.</li>
-          <li data-en="Manage PostgreSQL databases: user data retrieval, insertion, auditing, and integrity validation." data-tr="PostgreSQL veritabanlarını yönetiyorum: kullanıcı verisi sorgulama, ekleme, denetim ve bütünlük doğrulama.">Manage PostgreSQL databases: user data retrieval, insertion, auditing, and integrity validation.</li>
-          <li data-en="Designed and built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click — no technical knowledge required from field staff." data-tr="MobileCart Otomatik Kurulum Aracını tasarlayıp geliştirdim: tek bir çift tıklamayla 11 aşamalı hastane izleme yığınını (PowerShell, Prometheus, Grafana) kuran bağımsız bir Windows GUI — saha personelinden teknik bilgi gerekmez.">Designed and built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click — no technical knowledge required from field staff.</li>
-          <li data-en="Establish and maintain secure SSH/VPN connections for remote system access and cross-team operations." data-tr="Uzak sistem erişimi ve ekipler arası operasyonlar için güvenli SSH/VPN bağlantıları kuruyorum.">Establish and maintain secure SSH/VPN connections for remote system access and cross-team operations.</li>
-          <li data-en="Monitor uptime and service health in real time via Grafana — detect incidents before users notice them." data-tr="Grafana ile gerçek zamanlı uptime ve servis sağlığını izliyorum — olayları kullanıcılar fark etmeden tespit ediyorum.">Monitor uptime and service health in real time via Grafana — detect incidents before users notice them.</li>
-          <li data-en="Trace, isolate, and resolve complex incidents through deep log analysis (Linux + Windows)." data-tr="Derin log analizi (Linux + Windows) ile karmaşık olayları izliyor, izole ediyor ve çözüyorum.">Trace, isolate, and resolve complex incidents through deep log analysis (Linux + Windows).</li>
-          <li data-en="Author technical documentation and deliver end-user training sessions on a rotating 3-shift schedule." data-tr="3 vardiyalı rotasyonla teknik dokümantasyon hazırlıyor ve son kullanıcı eğitimleri veriyorum.">Author technical documentation and deliver end-user training sessions on a rotating 3-shift schedule.</li>
+          <li data-en="Designed and built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click." data-tr="MobileCart Otomatik Kurulum Aracını tasarlayıp geliştirdim: tek bir çift tıklamayla 11 aşamalı hastane izleme yığınını (PowerShell, Prometheus, Grafana) kuran bağımsız bir Windows GUI.">Designed and built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click.</li>
+          <li data-en="Maintain Linux (Ubuntu) production systems in a zero-downtime healthcare environment; isolate and resolve complex failures through deep log analysis on Linux and Windows." data-tr="Sıfır kesinti toleranslı sağlık ortamında Linux (Ubuntu) üretim sistemlerini yönetiyor; Linux ve Windows'ta derin log analizi ile karmaşık arızaları izole edip çözüyorum.">Maintain Linux (Ubuntu) production systems in a zero-downtime healthcare environment; isolate and resolve complex failures through deep log analysis on Linux and Windows.</li>
+          <li data-en="Manage PostgreSQL databases — insertion, retrieval, auditing, and integrity validation; monitor real-time service health via Grafana dashboards." data-tr="PostgreSQL veritabanlarını yönetiyorum — ekleme, sorgulama, denetim ve bütünlük doğrulaması; Grafana dashboardları ile gerçek zamanlı servis sağlığını izliyorum.">Manage PostgreSQL databases — insertion, retrieval, auditing, and integrity validation; monitor real-time service health via Grafana dashboards.</li>
+          <li data-en="Maintain SSH / VPN infrastructure; author technical documentation and deliver hands-on end-user training sessions on a rotating 3-shift schedule." data-tr="SSH / VPN altyapısını yönetiyor; 3 vardiyalı rotasyonla teknik dokümantasyon hazırlıyor ve uygulamalı son kullanıcı eğitimleri veriyorum.">Maintain SSH / VPN infrastructure; author technical documentation and deliver hands-on end-user training sessions on a rotating 3-shift schedule.</li>
         </ul>
       </div>
     </div>
 
-    <div class="ec rev d2">
-      <div class="el">
-        <div class="ep" data-en="Aug 2023<br>— Present<br>↑ Jan 2026" data-tr="Ağu 2023<br>— Günümüz<br>↑ Oca 2026">Aug 2023<br>— Present<br>↑ Jan 2026</div>
+    <div class="ecard rev d2">
+      <div class="eleft">
+        <div class="eperiod" data-en="Aug 2023<br>— Present" data-tr="Ağu 2023<br>— Günümüz">Aug 2023<br>— Present</div>
+        <div class="epromote">↑ <span data-en="Promoted Jan 2026" data-tr="Ocak 2026 Terfi">Promoted Jan 2026</span></div>
         <div class="eco">EPI-UPS</div>
       </div>
-      <div class="er2">
-        <div class="ero" data-en="GCC & Turkey Manager" data-tr="GCC & Türkiye Müdürü">GCC &amp; Turkey Manager</div>
+      <div class="eright">
+        <div class="erole" data-en="GCC & Turkey Manager" data-tr="GCC & Türkiye Müdürü">GCC &amp; Turkey Manager</div>
         <ul class="ebl">
           <li data-en="Promoted from Technical Support Engineer to GCC & Turkey Manager — recognised for technical expertise and commercial results delivered from day one." data-tr="Teknik Destek Mühendisliği'nden GCC & Türkiye Müdürlüğü'ne terfi — ilk günden itibaren gösterilen teknik uzmanlık ve ticari sonuçlar nedeniyle.">Promoted from Technical Support Engineer to GCC &amp; Turkey Manager — recognised for technical expertise and commercial results delivered from day one.</li>
-          <li data-en="Own the full regional sales cycle: prospecting, technical presales, proposals, contract negotiation, and key account management across GCC and Turkey." data-tr="GCC ve Türkiye genelinde potansiyel müşteri bulma, teknik satış öncesi, teklifler, sözleşme müzakeresi ve kilit hesap yönetimi dahil tüm bölgesel satış döngüsünü yönetiyorum.">Own the full regional sales cycle: prospecting, technical presales, proposals, contract negotiation, and key account management across GCC and Turkey.</li>
+          <li data-en="Own the full regional sales cycle: prospecting, technical presales, proposals, contract negotiation, and key account management across GCC and Turkey." data-tr="GCC ve Türkiye genelinde tüm bölgesel satış döngüsünü yönetiyorum: potansiyel müşteri bulma, teknik satış öncesi, teklifler, sözleşme müzakeresi ve kilit hesap yönetimi.">Own the full regional sales cycle: prospecting, technical presales, proposals, contract negotiation, and key account management across GCC and Turkey.</li>
           <li data-en="Lead site surveys, installation planning, commissioning, and enterprise after-sales support for UPS systems from 1 kVA to 1,200 kVA." data-tr="1 kVA'dan 1.200 kVA'ya kadar UPS sistemleri için saha araştırmaları, kurulum planlaması, devreye alma ve kurumsal satış sonrası destek süreçlerini yönetiyorum.">Lead site surveys, installation planning, commissioning, and enterprise after-sales support for UPS systems from 1 kVA to 1,200 kVA.</li>
-          <li data-en="Built and maintain the company website, driving inbound leads and product visibility across the region." data-tr="Şirket web sitesini sıfırdan kurdum ve yönetiyorum; bölge genelinde gelen müşteri adayları ve ürün görünürlüğü sağlıyorum.">Built and maintain the company website, driving inbound leads and product visibility across the region.</li>
+          <li data-en="Built and maintain the company website, driving inbound leads and product visibility across the GCC and Turkey region." data-tr="Şirket web sitesini sıfırdan kurdum ve yönetiyorum; GCC ve Türkiye bölgesinde gelen müşteri adayları ve ürün görünürlüğü sağlıyorum.">Built and maintain the company website, driving inbound leads and product visibility across the GCC and Turkey region.</li>
         </ul>
       </div>
     </div>
 
-    <div class="ec rev d3">
-      <div class="el">
-        <div class="ep" data-en="Apr 2022<br>— Present" data-tr="Nis 2022<br>— Günümüz">Apr 2022<br>— Present</div>
+    <div class="ecard rev d3">
+      <div class="eleft">
+        <div class="eperiod" data-en="Apr 2022<br>— Present" data-tr="Nis 2022<br>— Günümüz">Apr 2022<br>— Present</div>
         <div class="eco">Seventist</div>
       </div>
-      <div class="er2">
-        <div class="ero" data-en="CEO & Founder" data-tr="CEO & Kurucu">CEO &amp; Founder</div>
+      <div class="eright">
+        <div class="erole" data-en="CEO & Founder" data-tr="CEO & Kurucu">CEO &amp; Founder</div>
         <ul class="ebl">
           <li data-en="Founded a premium B2B event services company — VIP fleet management, simultaneous interpretation (20+ languages), international exhibition logistics, and 3D stand design for corporate congresses and trade fairs." data-tr="Premium bir B2B etkinlik hizmetleri şirketi kurdum — VIP filo yönetimi, simultane tercümanlık (20+ dil), uluslararası fuar lojistiği ve kurumsal kongreler ile ticaret fuarları için 3D stand tasarımı.">Founded a premium B2B event services company — VIP fleet management, simultaneous interpretation (20+ languages), international exhibition logistics, and 3D stand design for corporate congresses and trade fairs.</li>
           <li data-en="Drive all business development, client acquisition, and strategic partnerships while managing end-to-end service delivery for international clients." data-tr="Uluslararası müşteriler için uçtan uca hizmet sunumunu yönetirken tüm iş geliştirme, müşteri kazanımı ve stratejik ortaklıkları yürütüyorum.">Drive all business development, client acquisition, and strategic partnerships while managing end-to-end service delivery for international clients.</li>
@@ -409,34 +419,32 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       </div>
     </div>
 
-    <div class="ec rev d4">
-      <div class="el">
-        <div class="ep" data-en="Apr 2022<br>— Aug 2023" data-tr="Nis 2022<br>— Ağu 2023">Apr 2022<br>— Aug 2023</div>
+    <div class="ecard rev d4">
+      <div class="eleft">
+        <div class="eperiod" data-en="Apr 2022<br>— Aug 2023" data-tr="Nis 2022<br>— Ağu 2023">Apr 2022<br>— Aug 2023</div>
         <div class="eco">3BFab</div>
       </div>
-      <div class="er2">
-        <div class="ero" data-en="Technical Support Engineer — 3D Printing" data-tr="Teknik Destek Mühendisi — 3D Baskı">Technical Support Engineer — 3D Printing</div>
+      <div class="eright">
+        <div class="erole" data-en="Technical Support Engineer — 3D Printing" data-tr="Teknik Destek Mühendisi — 3D Baskı">Technical Support Engineer — 3D Printing</div>
         <ul class="ebl">
           <li data-en="Managed full customer lifecycle across multiple international regions — from initial contact and product demonstrations through on-site installation, hands-on training, and long-term after-sales support." data-tr="Birden fazla uluslararası bölgede ilk temastan ürün demolarına, yerinde kurulum, uygulamalı eğitim ve uzun vadeli satış sonrası desteğe kadar tüm müşteri yaşam döngüsünü yönettim.">Managed full customer lifecycle across multiple international regions — from initial contact and product demonstrations through on-site installation, hands-on training, and long-term after-sales support.</li>
-          <li data-en="Calibrated industrial SLA / resin 3D printers; diagnosed and resolved hardware failures on-site, delivering root-cause solutions directly to clients." data-tr="Endüstriyel SLA/reçine 3D yazıcıları kalibre ettim; saha donanım arızalarını teşhis edip çözdüm, müşterilere doğrudan kök neden çözümleri sundum.">Calibrated industrial SLA / resin 3D printers; diagnosed and resolved hardware failures on-site, delivering root-cause solutions directly to clients.</li>
+          <li data-en="Calibrated industrial SLA / resin 3D printers; diagnosed and resolved hardware failures on-site, delivering root-cause solutions directly to clients in the field." data-tr="Endüstriyel SLA/reçine 3D yazıcıları kalibre ettim; saha donanım arızalarını teşhis edip çözdüm, müşterilere doğrudan kök neden çözümleri sundum.">Calibrated industrial SLA / resin 3D printers; diagnosed and resolved hardware failures on-site, delivering root-cause solutions directly to clients in the field.</li>
           <li data-en="Coordinated multilingual client communications; produced weekly and monthly performance reports and maintained proactive account follow-up cycles." data-tr="Çok dilli müşteri iletişimini koordine ettim; haftalık ve aylık performans raporları hazırladım ve proaktif hesap takip döngülerini sürdürdüm.">Coordinated multilingual client communications; produced weekly and monthly performance reports and maintained proactive account follow-up cycles.</li>
         </ul>
       </div>
     </div>
 
-    <div class="ec rev d3">
-      <div class="el">
-        <div class="ep" data-en="Jun 2021<br>— Apr 2022" data-tr="Haz 2021<br>— Nis 2022">Jun 2021<br>— Apr 2022</div>
+    <div class="ecard rev d1">
+      <div class="eleft">
+        <div class="eperiod" data-en="Jun 2021<br>— Apr 2022" data-tr="Haz 2021<br>— Nis 2022">Jun 2021<br>— Apr 2022</div>
         <div class="eco">Innovasis<br>UPS</div>
       </div>
-      <div class="er2">
-        <div class="ero" data-en="Technical Support Engineer — Power Systems" data-tr="Teknik Destek Mühendisi — Güç Sistemleri">Technical Support Engineer — Power Systems</div>
+      <div class="eright">
+        <div class="erole" data-en="Technical Support Engineer — Power Systems" data-tr="Teknik Destek Mühendisi — Güç Sistemleri">Technical Support Engineer — Power Systems</div>
         <ul class="ebl">
-          <li data-en="Delivered global technical support in English, Turkish, and Arabic across multiple time zones." data-tr="Birden fazla saat diliminde İngilizce, Türkçe ve Arapça olarak küresel teknik destek sağladım.">Delivered global technical support in English, Turkish, and Arabic across multiple time zones.</li>
-          <li data-en="Commissioned and validated UPS devices including full Inverter and Rectifier board diagnostics." data-tr="UPS cihazlarını devreye alıp doğruladım; İnvertör ve Redresör kart diagnostiği gerçekleştirdim.">Commissioned and validated UPS devices including full Inverter and Rectifier board diagnostics.</li>
-          <li data-en="Repaired circuit boards — replacing resistors, capacitors, ICs, and discrete components." data-tr="Devre kartlarını onardım — direnç, kondansatör, entegre devre ve ayrık bileşen değişimi yaptım.">Repaired circuit boards — replacing resistors, capacitors, ICs, and discrete components.</li>
-          <li data-en="Performed on-site load tests and battery validation using oscilloscopes and precision lab instruments." data-tr="Osiloskop ve hassas lab ekipmanları kullanarak saha yük testleri ve batarya doğrulaması yaptım.">Performed on-site load tests and battery validation using oscilloscopes and precision lab instruments.</li>
-          <li data-en="Reviewed customer specs against international standards; recommended process improvements." data-tr="Müşteri özelliklerini uluslararası standartlarla karşılaştırdım; süreç iyileştirmeleri önerdim.">Reviewed customer specs against international standards; recommended process improvements.</li>
+          <li data-en="Delivered multilingual global technical support (EN / TR / AR) — UPS commissioning, diagnostics, and customer training across multiple time zones." data-tr="Çok dilli küresel teknik destek (EN / TR / AR) — birden fazla saat diliminde UPS devreye alma, diagnostik ve müşteri eğitimi.">Delivered multilingual global technical support (EN / TR / AR) — UPS commissioning, diagnostics, and customer training across multiple time zones.</li>
+          <li data-en="Performed Inverter / Rectifier board diagnostics; conducted on-site load and battery validation using oscilloscopes and precision lab instruments." data-tr="İnvertör / Redresör kart diagnostiği gerçekleştirdim; osiloskop ve hassas lab ekipmanları kullanarak saha yük ve batarya doğrulaması yaptım.">Performed Inverter / Rectifier board diagnostics; conducted on-site load and battery validation using oscilloscopes and precision lab instruments.</li>
+          <li data-en="Carried out circuit board repair (resistors, ICs, capacitors); reviewed client requirements against international standards and recommended process improvements." data-tr="Devre kartı onarımı (direnç, IC, kondansatör) gerçekleştirdim; müşteri gereksinimlerini uluslararası standartlarla karşılaştırdım ve süreç iyileştirmeleri önerdim.">Carried out circuit board repair (resistors, ICs, capacitors); reviewed client requirements against international standards and recommended process improvements.</li>
         </ul>
       </div>
     </div>
@@ -449,20 +457,20 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 <section id="projects">
 <div class="w">
   <div class="rev"><div class="stag" data-en="// 03 — Projects" data-tr="// 03 — Projeler">// 03 — Projects</div></div>
-  <div class="sh rev d1" data-en="WHAT I'VE BUILT" data-tr="GELİŞTİRDİKLERİM">WHAT I'VE BUILT</div>
+  <div class="sh rev d1">WHAT I'VE <span class="ol">BUILT</span></div>
   <div class="pg">
 
-    <div class="pc ft rev d1">
+    <div class="pc feat rev d1">
       <div>
         <div class="pnum">01</div>
-        <div class="ptags"><span class="ptag">Web Dev</span><span class="ptag">Live</span></div>
-        <div class="pn" style="margin-top:16px">Seventist</div>
-        <p class="pd" style="margin-top:12px"
-          data-en="A professional B2B event services platform built to convert. Seventist connects businesses with premium event staffing, logistics, and production services — from Istanbul to global trade fairs."
-          data-tr="Dönüşüm odaklı profesyonel bir B2B etkinlik hizmetleri platformu. Seventist, işletmeleri premium etkinlik personeli, lojistik ve prodüksiyon hizmetleriyle buluşturuyor — İstanbul'dan küresel ticaret fuarlarına.">
-          A professional B2B event services platform built to convert. Seventist connects businesses with premium event staffing, logistics, and production services — from Istanbul to global trade fairs.
+        <div class="ptags"><span class="ptag">Web Dev</span><span class="ptag">B2B</span><span class="ptag ptag-live">Live</span></div>
+        <div class="pn" style="margin-top:18px">Seventist</div>
+        <p class="pd" style="margin-top:14px"
+          data-en="A professional B2B event services platform built to convert. Connects businesses with premium event staffing, simultaneous interpretation (20+ languages), VIP logistics, and 3D stand production — from Istanbul to global trade fairs."
+          data-tr="Dönüşüm odaklı profesyonel bir B2B etkinlik hizmetleri platformu. İşletmeleri premium etkinlik personeli, simultane tercümanlık (20+ dil), VIP lojistik ve 3D stand prodüksiyonuyla buluşturuyor.">
+          A professional B2B event services platform built to convert. Connects businesses with premium event staffing, simultaneous interpretation (20+ languages), VIP logistics, and 3D stand production — from Istanbul to global trade fairs.
         </p>
-        <a href="https://seventist.netlify.app/anasayfa" target="_blank" class="pl" style="margin-top:20px" data-en="Visit Site →" data-tr="Siteyi Ziyaret Et →">Visit Site →</a>
+        <a href="https://seventist.netlify.app/anasayfa" target="_blank" class="pl" style="margin-top:24px" data-en="Visit Live Site →" data-tr="Canlı Siteyi Ziyaret Et →">Visit Live Site →</a>
       </div>
       <div>
         <ul class="pf">
@@ -479,53 +487,47 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 
     <div class="pc rev d2">
       <div class="pnum">02</div>
-      <div class="ptags"><span class="ptag">PowerShell</span><span class="ptag">Windows GUI</span><span class="ptag">Live</span></div>
-      <div class="pn" style="margin-top:16px" data-en="MobileCart Monitoring Installer" data-tr="MobileCart İzleme Kurulum Aracı">MobileCart<br>Monitoring Installer</div>
-      <p class="pd"
-        data-en="A standalone Windows application that deploys an 11-phase hospital monitoring stack — Prometheus, Grafana, and supporting services — from a single double-click. No technical knowledge required from field staff."
-        data-tr="Prometheus, Grafana ve destekleyici servisleri kapsayan 11 aşamalı bir hastane izleme yığınını tek bir çift tıklamayla dağıtan bağımsız bir Windows uygulaması. Saha personelinden teknik bilgi gerekmez.">
-        A standalone Windows application that deploys an 11-phase hospital monitoring stack — Prometheus, Grafana, and supporting services — from a single double-click. No technical knowledge required from field staff.
+      <div class="ptags"><span class="ptag">PowerShell</span><span class="ptag ptag-pur">Windows GUI</span><span class="ptag ptag-live">Live</span></div>
+      <div class="pn" style="margin-top:18px" data-en="MobileCart Monitoring Installer" data-tr="MobileCart İzleme Kurulum Aracı">MobileCart<br>Monitoring Installer</div>
+      <p class="pd" data-en="A standalone Windows application deploying an 11-phase hospital monitoring stack — Prometheus, Grafana, and supporting services — from a single double-click. No technical knowledge required from field staff."
+         data-tr="Prometheus, Grafana ve destekleyici servisleri kapsayan 11 aşamalı bir hastane izleme yığınını tek bir çift tıklamayla dağıtan bağımsız bir Windows uygulaması.">
+        A standalone Windows application deploying an 11-phase hospital monitoring stack — Prometheus, Grafana, and supporting services — from a single double-click. No technical knowledge required from field staff.
       </p>
       <ul class="pf">
         <li data-en="11-phase automated deployment sequence" data-tr="11 aşamalı otomatik kurulum dizisi">11-phase automated deployment sequence</li>
         <li data-en="Grafana + Prometheus stack, zero configuration" data-tr="Grafana + Prometheus yığını, sıfır yapılandırma">Grafana + Prometheus stack, zero configuration</li>
         <li data-en="Single-click GUI for non-technical field staff" data-tr="Teknik olmayan saha personeli için tek tıklama arayüzü">Single-click GUI for non-technical field staff</li>
-        <li data-en="Built for Ceiba Healthcare's hospital deployments" data-tr="Ceiba Healthcare hastane kurulumları için geliştirildi">Built for Ceiba Healthcare's hospital deployments</li>
+        <li data-en="Built for Ceiba Healthcare hospital deployments" data-tr="Ceiba Healthcare hastane kurulumları için">Built for Ceiba Healthcare hospital deployments</li>
       </ul>
-      <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="GitHub →" data-tr="GitHub →">GitHub →</a>
     </div>
 
     <div class="pc rev d3">
       <div class="pnum">03</div>
-      <div class="ptags"><span class="ptag">Web Dev</span><span class="ptag">Sales</span><span class="ptag">Live</span></div>
-      <div class="pn" style="margin-top:16px" data-en="EPI-UPS Corporate Website" data-tr="EPI-UPS Kurumsal Web Sitesi">EPI-UPS<br>Corporate Website</div>
-      <p class="pd"
-        data-en="Built the regional corporate website from scratch for EPI-UPS — driving inbound leads and product visibility across GCC and Turkey markets. Designed to convert technical buyers researching enterprise UPS solutions."
-        data-tr="EPI-UPS için bölgesel kurumsal web sitesini sıfırdan inşa ettim — GCC ve Türkiye pazarlarında gelen müşteri adayları ve ürün görünürlüğü sağlıyor. Kurumsal UPS çözümleri araştıran teknik alıcıları dönüştürmek için tasarlandı.">
-        Built the regional corporate website from scratch for EPI-UPS — driving inbound leads and product visibility across GCC and Turkey markets. Designed to convert technical buyers researching enterprise UPS solutions.
+      <div class="ptags"><span class="ptag">Web Dev</span><span class="ptag">Sales</span><span class="ptag ptag-live">Live</span></div>
+      <div class="pn" style="margin-top:18px" data-en="EPI-UPS Corporate Website" data-tr="EPI-UPS Kurumsal Web Sitesi">EPI-UPS<br>Corporate Website</div>
+      <p class="pd" data-en="Built the regional corporate website from scratch for EPI-UPS — driving inbound leads and product visibility across GCC and Turkey. Designed to convert technical buyers researching enterprise UPS solutions (1 kVA–1,200 kVA)."
+         data-tr="EPI-UPS için bölgesel kurumsal web sitesini sıfırdan inşa ettim — GCC ve Türkiye pazarlarında gelen müşteri adayları ve ürün görünürlüğü sağlıyor.">
+        Built the regional corporate website from scratch for EPI-UPS — driving inbound leads and product visibility across GCC and Turkey. Designed to convert technical buyers researching enterprise UPS solutions (1 kVA–1,200 kVA).
       </p>
       <ul class="pf">
         <li data-en="Built from scratch — no template" data-tr="Sıfırdan inşa — şablon yok">Built from scratch — no template</li>
         <li data-en="Product catalogue: 1 kVA to 1,200 kVA range" data-tr="Ürün kataloğu: 1 kVA'dan 1.200 kVA'ya">Product catalogue: 1 kVA to 1,200 kVA range</li>
-        <li data-en="GCC & Turkey regional focus" data-tr="GCC ve Türkiye bölgesel odak">GCC &amp; Turkey regional focus</li>
-        <li data-en="Inbound lead generation funnel" data-tr="Gelen müşteri adayı üretim hunisi">Inbound lead generation funnel</li>
+        <li data-en="GCC & Turkey regional inbound funnel" data-tr="GCC ve Türkiye bölgesel gelen müşteri hunisi">GCC &amp; Turkey regional inbound funnel</li>
       </ul>
     </div>
 
     <div class="pc rev d4">
       <div class="pnum">04</div>
       <div class="ptags"><span class="ptag">Python</span><span class="ptag">Automation</span></div>
-      <div class="pn" style="margin-top:16px" data-en="Bulk Email Sender" data-tr="Toplu E-posta Gönderici">Bulk Email Sender</div>
-      <p class="pd"
-        data-en="Upload an Excel file, pick a language, run. The tool reads contacts, filters by language code, and dispatches personalised emails in bulk via the correct EN or TR Python script — zero manual effort per send."
-        data-tr="Bir Excel dosyası yükle, dil seç, çalıştır. Araç kişileri okur, dil koduna göre filtreler ve doğru EN veya TR Python scripti aracılığıyla kişiselleştirilmiş e-postaları toplu olarak gönderir — her gönderimde sıfır manuel efor.">
-        Upload an Excel file, pick a language, run. The tool reads contacts, filters by language code, and dispatches personalised emails in bulk via the correct EN or TR Python script — zero manual effort per send.
+      <div class="pn" style="margin-top:18px" data-en="Bulk Email Sender" data-tr="Toplu E-posta Gönderici">Bulk Email Sender</div>
+      <p class="pd" data-en="Upload an Excel file, pick a language, run. Reads contacts, filters by language code, and dispatches personalised emails in bulk — zero manual effort per send."
+         data-tr="Bir Excel dosyası yükle, dil seç, çalıştır. Kişileri okur, dil koduna göre filtreler ve kişiselleştirilmiş e-postaları toplu olarak gönderir.">
+        Upload an Excel file, pick a language, run. Reads contacts, filters by language code, and dispatches personalised emails in bulk — zero manual effort per send.
       </p>
       <ul class="pf">
         <li data-en="Excel-driven contact input (openpyxl)" data-tr="Excel tabanlı kişi girişi (openpyxl)">Excel-driven contact input (openpyxl)</li>
         <li data-en="Bilingual dispatch — EN and TR scripts" data-tr="İki dilli gönderim — EN ve TR scriptleri">Bilingual dispatch — EN and TR scripts</li>
-        <li data-en="Language-aware filtering logic" data-tr="Dil farkında filtreleme mantığı">Language-aware filtering logic</li>
-        <li data-en="SMTP delivery with error handling" data-tr="Hata yönetimli SMTP teslimatı">SMTP delivery with error handling</li>
+        <li data-en="SMTP delivery with full error handling" data-tr="Tam hata yönetimli SMTP teslimatı">SMTP delivery with full error handling</li>
       </ul>
       <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="GitHub →" data-tr="GitHub →">GitHub →</a>
     </div>
@@ -533,15 +535,13 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
     <div class="pc rev d1">
       <div class="pnum">05</div>
       <div class="ptags"><span class="ptag">Python</span><span class="ptag">Scraping</span><span class="ptag">Data</span></div>
-      <div class="pn" style="margin-top:16px" data-en="Web Intel Scraper" data-tr="Web İstihbarat Toplayıcısı">Web Intel<br>Scraper</div>
-      <p class="pd"
-        data-en="Tell it what you need. It crawls the full target site, extracts structured business intelligence — company name, email, phone, country — and exports a clean, sortable Excel file. Built for lead gen and market research."
-        data-tr="Ne istediğini söyle. Hedef siteyi uçtan uca tarar, yapılandırılmış iş istihbaratını — şirket adı, e-posta, telefon, ülke — çıkarır ve temiz, sıralanabilir bir Excel dosyasına aktarır. Müşteri edinimi ve pazar araştırması için geliştirildi.">
-        Tell it what you need. It crawls the full target site, extracts structured business intelligence — company name, email, phone, country — and exports a clean, sortable Excel file. Built for lead gen and market research.
+      <div class="pn" style="margin-top:18px" data-en="Web Intel Scraper" data-tr="Web İstihbarat Toplayıcısı">Web Intel<br>Scraper</div>
+      <p class="pd" data-en="Deep-crawl tool that extracts structured business intelligence — company, email, phone, country — from any target site and exports a clean, sortable Excel report."
+         data-tr="Hedef siteden yapılandırılmış iş istihbaratı çıkaran derin tarama aracı — şirket, e-posta, telefon, ülke — ve temiz bir Excel raporu oluşturur.">
+        Deep-crawl tool that extracts structured business intelligence — company, email, phone, country — from any target site and exports a clean, sortable Excel report.
       </p>
       <ul class="pf">
         <li data-en="Full-site deep crawl from a single URL" data-tr="Tek URL'den tam site derin tarama">Full-site deep crawl from a single URL</li>
-        <li data-en="Extracts: company, email, phone, country" data-tr="Çıkarır: şirket, e-posta, telefon, ülke">Extracts: company, email, phone, country</li>
         <li data-en="Exports structured output to .xlsx" data-tr="Yapılandırılmış çıktıyı .xlsx'e aktarır">Exports structured output to .xlsx</li>
         <li data-en="Query-driven — you define what to gather" data-tr="Sorgu odaklı — neyi toplayacağını sen belirlersin">Query-driven — you define what to gather</li>
       </ul>
@@ -550,18 +550,16 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 
     <div class="pc rev d2">
       <div class="pnum">06</div>
-      <div class="ptags"><span class="ptag">n8n</span><span class="ptag">AI Agent</span><span class="ps" data-en="In Progress" data-tr="Geliştiriliyor">In Progress</span></div>
-      <div class="pn" style="margin-top:16px" data-en="Social Media AI Agent" data-tr="Sosyal Medya Yapay Zeka Ajanı">Social Media<br>AI Agent</div>
-      <p class="pd"
-        data-en="An autonomous agent that creates and publishes content across all major platforms — no human in the loop. Powered by n8n workflow orchestration: it generates on-brand posts, schedules them, and posts while you sleep."
-        data-tr="Tüm büyük platformlarda içerik oluşturup yayınlayan otonom bir ajan — döngüde insan yok. n8n iş akışı orkestrasyonuyla çalışır: markaya uygun gönderiler oluşturur, zamanlar ve siz uyurken paylaşır.">
-        An autonomous agent that creates and publishes content across all major platforms — no human in the loop. Powered by n8n workflow orchestration: it generates on-brand posts, schedules them, and posts while you sleep.
+      <div class="ptags"><span class="ptag">n8n</span><span class="ptag ptag-pur">AI Agent</span><span class="ptag ptag-wip" data-en="In Progress" data-tr="Geliştiriliyor">In Progress</span></div>
+      <div class="pn" style="margin-top:18px" data-en="Social Media AI Agent" data-tr="Sosyal Medya AI Ajanı">Social Media<br>AI Agent</div>
+      <p class="pd" data-en="Autonomous agent that creates and publishes content across all major platforms — no human in the loop. n8n orchestration generates on-brand posts and publishes while you sleep."
+         data-tr="Tüm büyük platformlarda içerik oluşturup yayınlayan otonom ajan — döngüde insan yok. n8n orkestrasyonu markaya uygun gönderiler oluşturur ve siz uyurken yayınlar.">
+        Autonomous agent that creates and publishes content across all major platforms — no human in the loop. n8n orchestration generates on-brand posts and publishes while you sleep.
       </p>
       <ul class="pf">
-        <li data-en="AI-generated content per platform format" data-tr="Platform formatına göre yapay zeka içeriği">AI-generated content per platform format</li>
+        <li data-en="AI-generated content per platform format" data-tr="Platform formatına göre AI içeriği">AI-generated content per platform format</li>
         <li data-en="Auto-publish: Instagram, X, LinkedIn & more" data-tr="Otomatik paylaşım: Instagram, X, LinkedIn ve daha fazlası">Auto-publish: Instagram, X, LinkedIn &amp; more</li>
         <li data-en="n8n orchestration + intelligent scheduling" data-tr="n8n orkestrasyonu + akıllı zamanlama">n8n orchestration + intelligent scheduling</li>
-        <li data-en="Brand-aware tone & style enforcement" data-tr="Marka bilinçli ton ve stil uygulaması">Brand-aware tone &amp; style enforcement</li>
       </ul>
       <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="Follow on GitHub →" data-tr="GitHub'da Takip Et →">Follow on GitHub →</a>
     </div>
@@ -574,13 +572,12 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 <section id="contact">
 <div class="w">
   <div class="rev"><div class="stag" data-en="// 04 — Contact" data-tr="// 04 — İletişim">// 04 — Contact</div></div>
-  <div class="ci">
+  <div class="cg">
     <div class="rev d1">
-      <div class="cb" data-en="LET'S<br><span>TALK</span>" data-tr="Hadi<br><span>Konuşalım</span>">LET'S<br><span>TALK</span></div>
-      <p class="cs"
-        data-en="Open to new roles, freelance projects, automation consulting, and interesting collaborations. I respond fast."
-        data-tr="Yeni pozisyonlara, serbest projelere, otomasyon danışmanlığına ve ilgi çekici işbirliklere açığım. Hızlı dönüş yapıyorum.">
-        Open to new roles, freelance projects, automation consulting, and interesting collaborations. I respond fast.
+      <div class="cbig">LET'S<br><span class="ol">TALK</span></div>
+      <p class="csub" data-en="Open to new roles, freelance projects, automation consulting, and interesting collaborations. Trilingual and time-zone flexible. I respond fast."
+         data-tr="Yeni pozisyonlara, serbest projelere, otomasyon danışmanlığına ve ilgi çekici işbirliklere açığım. Üç dilli ve saat dilimine esnek. Hızlı dönüş yapıyorum.">
+        Open to new roles, freelance projects, automation consulting, and interesting collaborations. Trilingual and time-zone flexible. I respond fast.
       </p>
     </div>
     <div class="cls rev d2">
@@ -602,7 +599,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       </a>
       <a class="cl" href="https://isaseyit.github.io" target="_blank">
         <div class="ci2"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253M3 12a8.96 8.96 0 00.284 2.253"/></svg></div>
-        <div><div class="cla" data-en="Website" data-tr="Web Sitesi">Website</div><div class="clv">isaseyit.github.io</div></div>
+        <div><div class="cla" data-en="Portfolio" data-tr="Portfolyo">Portfolio</div><div class="clv">isaseyit.github.io</div></div>
       </a>
     </div>
   </div>
@@ -619,65 +616,47 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 </footer>
 
 <script>
-/* ─── LANGUAGE SYSTEM ─── */
+/* LANGUAGE */
 let currentLang = localStorage.getItem('lang') || 'en';
-
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
-
-  // Toggle button states
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
-
-  // Update html lang attribute
   document.documentElement.lang = lang;
-
-  // Update all elements with data-en / data-tr
   document.querySelectorAll('[data-en]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
     if (!val) return;
-    // Use innerHTML to support <br>, <strong> etc
-    if (val.includes('<')) {
-      el.innerHTML = val;
-    } else {
-      el.textContent = val;
-    }
+    if (val.includes('<')) el.innerHTML = val; else el.textContent = val;
   });
-
-  // Update page title
-  document.title = lang === 'tr'
-    ? 'Isa Seyitmurat — Mühendis & Yazılım Üreticisi'
-    : 'Isa Seyitmurat — Engineer & Builder';
+  document.title = lang === 'tr' ? 'Isa Seyitmurat — Teknik Mühendis & CEO' : 'Isa Seyitmurat — Technical Engineer & CEO';
 }
-
-// Apply saved language on load
 setLang(currentLang);
 
-/* ─── CURSOR ─── */
-const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+/* CURSOR */
+const cur = document.getElementById('cur'), cur2 = document.getElementById('cur2');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
 (function t(){
-  cur.style.transform=`translate(${mx-4}px,${my-4}px)`;
-  rx+=(mx-rx)*.13;ry+=(my-ry)*.13;
-  cur2.style.transform=`translate(${rx-16}px,${ry-16}px)`;
+  cur.style.transform = `translate(${mx-4}px,${my-4}px)`;
+  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+  cur2.style.transform = `translate(${rx-18}px,${ry-18}px)`;
   requestAnimationFrame(t);
 })();
-document.querySelectorAll('a,button,.pc,.sr').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur2.style.width='54px';cur2.style.height='54px';cur2.style.borderColor='rgba(0,255,224,.8)'});
-  el.addEventListener('mouseleave',()=>{cur2.style.width='32px';cur2.style.height='32px';cur2.style.borderColor='rgba(0,255,224,.35)'});
+document.querySelectorAll('a,button,.pc,.astat,.ecard').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur2.style.width='52px';cur2.style.height='52px';cur2.style.borderColor='rgba(0,240,181,.7)'; });
+  el.addEventListener('mouseleave', () => { cur2.style.width='36px';cur2.style.height='36px';cur2.style.borderColor='rgba(0,240,181,.3)'; });
 });
 
-/* ─── PARTICLE NET ─── */
-const cv=document.getElementById('bgc'),ctx=cv.getContext('2d');
+/* PARTICLE NET */
+const cv=document.getElementById('bgc'), ctx=cv.getContext('2d');
 let W,H;
 function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight}
-rsz();window.addEventListener('resize',rsz);
-const N=85,pts=[];
-for(let i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,z:Math.random()*600+100,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,vz:(Math.random()-.5)*.35});
+rsz(); window.addEventListener('resize',rsz);
+const N=65, pts=[];
+for(let i=0;i<N;i++) pts.push({x:Math.random()*W,y:Math.random()*H,z:Math.random()*600+100,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,vz:(Math.random()-.5)*.3});
 let mfx=0,mfy=0;
-document.addEventListener('mousemove',e=>{mfx=(e.clientX-W/2)/W*.003;mfy=(e.clientY-H/2)/H*.003});
+document.addEventListener('mousemove',e=>{mfx=(e.clientX-W/2)/W*.002;mfy=(e.clientY-H/2)/H*.002});
 function drawNet(){
   ctx.clearRect(0,0,W,H);
   const fov=480;
@@ -690,66 +669,25 @@ function drawNet(){
     for(let j=i+1;j<N;j++){
       const b=pts[j],sb=fov/(fov+b.z),bx=b.x*sb+W*(1-sb)/2,by=b.y*sb+H*(1-sb)/2;
       const d=Math.hypot(ax-bx,ay-by);
-      if(d<125){ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.strokeStyle=`rgba(0,255,224,${(1-d/125)*.11})`;ctx.lineWidth=.5;ctx.stroke()}
+      if(d<115){ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.strokeStyle=`rgba(0,240,181,${(1-d/115)*.08})`;ctx.lineWidth=.5;ctx.stroke()}
     }
-    ctx.beginPath();ctx.arc(ax,ay,sa*1.8,0,Math.PI*2);ctx.fillStyle=`rgba(0,255,224,${sa*.45})`;ctx.fill();
+    ctx.beginPath();ctx.arc(ax,ay,sa*1.6,0,Math.PI*2);ctx.fillStyle=`rgba(0,240,181,${sa*.38})`;ctx.fill();
   }
   requestAnimationFrame(drawNet);
 }
 drawNet();
 
-/* ─── 3D SPHERE ─── */
-const sc=document.getElementById('sc2');
-if(sc){
-  const sctx=sc.getContext('2d');
-  const SZ=320;sc.width=SZ*2;sc.height=SZ*2;sctx.scale(2,2);
-  const R=130,ST=16,SL=16;
-  let rotX=.3,rotY=0,tX=.3,tY=0,drag=false,ldx=0,ldy=0;
-  sc.addEventListener('mousedown',e=>{drag=true;ldx=e.clientX;ldy=e.clientY});
-  window.addEventListener('mouseup',()=>drag=false);
-  window.addEventListener('mousemove',e=>{if(!drag)return;tY+=(e.clientX-ldx)*.005;tX+=(e.clientY-ldy)*.005;ldx=e.clientX;ldy=e.clientY});
-  const LBLS=['SSH','SQL','AWS','LINUX','PYTHON','VPN','GRAFANA','n8n','BASH','AZURE','CLAUDE','UBUNTU','REST API','SALES','UPS'];
-  function pt3(phi,theta){
-    const x=R*Math.sin(phi)*Math.cos(theta),y=R*Math.cos(phi),z=R*Math.sin(phi)*Math.sin(theta);
-    const cx2=Math.cos(rotX),sx=Math.sin(rotX),y2=cx2*y-sx*z,z2=sx*y+cx2*z;
-    const cy=Math.cos(rotY),sy2=Math.sin(rotY),x3=cy*x+sy2*z2,z3=-sy2*x+cy*z2;
-    return{x:x3,y:y2,z:z3};
-  }
-  function ds(){
-    sctx.clearRect(0,0,SZ,SZ);
-    rotX+=(tX-rotX)*.03;rotY+=(tY-rotY)*.03;tY+=.005;
-    const CX=SZ/2,CY=SZ/2;
-    for(let i=0;i<=ST;i++){
-      const phi=Math.PI*i/ST;sctx.beginPath();
-      for(let j=0;j<=SL*3;j++){const theta=2*Math.PI*j/(SL*3),{x,y,z}=pt3(phi,theta);const sc2=380/(380+z),px=CX+x*sc2,py=CY+y*sc2;j===0?sctx.moveTo(px,py):sctx.lineTo(px,py)}
-      sctx.strokeStyle='rgba(0,255,224,0.13)';sctx.lineWidth=.5;sctx.stroke();
-    }
-    for(let j=0;j<=SL;j++){
-      const theta=2*Math.PI*j/SL;sctx.beginPath();
-      for(let i=0;i<=ST*3;i++){const phi=Math.PI*i/(ST*3),{x,y,z}=pt3(phi,theta);const sc2=380/(380+z),px=CX+x*sc2,py=CY+y*sc2;i===0?sctx.moveTo(px,py):sctx.lineTo(px,py)}
-      sctx.strokeStyle='rgba(0,255,224,0.13)';sctx.lineWidth=.5;sctx.stroke();
-    }
-    LBLS.forEach((lbl,idx)=>{
-      const phi=Math.PI*(idx+1)/(LBLS.length+1),theta=2*Math.PI*idx/LBLS.length;
-      const{x,y,z}=pt3(phi,theta);
-      if(z>-20){const sc2=380/(380+z),px=CX+x*sc2,py=CY+y*sc2;const alpha=Math.max(0,(z+R)/(2*R));sctx.font=`600 ${Math.round(7*sc2)}px JetBrains Mono,monospace`;sctx.fillStyle=`rgba(0,255,224,${alpha*.95})`;sctx.textAlign='center';sctx.textBaseline='middle';sctx.fillText(lbl,px,py)}
-    });
-    requestAnimationFrame(ds);
-  }
-  ds();
-}
-
-/* ─── SCROLL REVEAL ─── */
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
+/* SCROLL REVEAL */
+const io = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.08});
 document.querySelectorAll('.rev').forEach(el=>io.observe(el));
 
-/* ─── HERO PARALLAX ─── */
+/* HERO PARALLAX */
 window.addEventListener('scroll',()=>{
   const y=scrollY,hero=document.getElementById('hero');
-  if(hero&&y<innerHeight){hero.style.transform=`translateY(${y*.22}px)`;hero.style.opacity=1-y/650}
+  if(hero&&y<innerHeight){hero.style.transform=`translateY(${y*.16}px)`;hero.style.opacity=1-y/720}
 });
 
-/* ─── SMOOTH SCROLL ─── */
+/* SMOOTH SCROLL */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const id=a.getAttribute('href');if(id==='#')return;
