@@ -3,7 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isa Seyitmurat — Technical Engineer & CEO</title>
+<title>Isa Seyitmurat — Technical Support Engineer</title>
+<meta name="description" content="Technical support engineer who builds the tools the support team runs on. Built eMonitoring, an internal platform covering 2,200+ bedside devices across 120+ hospitals.">
+<meta property="og:title" content="Isa Seyitmurat — Technical Support Engineer">
+<meta property="og:description" content="Builds the tools the support team runs on. eMonitoring, MobileCart installer, Linux production systems, PostgreSQL, Grafana.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://isaseyit.github.io">
+<meta property="og:image" content="https://isaseyit.github.io/Isa.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080F'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='18' font-weight='bold' fill='%2300F0B5' text-anchor='middle'%3EIS%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Isa Seyitmurat",
+"jobTitle":"Technical Support Engineer","url":"https://isaseyit.github.io",
+"email":"isaseyitmurat97@gmail.com","telephone":"+90 541 677 5581",
+"address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"},
+"worksFor":{"@type":"Organization","name":"Ceiba Healthcare"},
+"alumniOf":{"@type":"CollegeOrUniversity","name":"Firat University"},
+"knowsLanguage":["Turkish","English","Arabic"],
+"sameAs":["https://github.com/isaseyit","https://linkedin.com/in/isa-seyitmurat/"],
+"knowsAbout":["Linux","TypeScript","Next.js","PostgreSQL","Grafana","Prometheus","PowerShell","Python","n8n"]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -110,7 +129,7 @@ section{position:relative;z-index:1}
 
 /* SKILLS */
 #skills{padding:0 0 140px}
-.skgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:0}
+.skgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:0}
 .skcard{background:var(--s1);border:1px solid var(--border);padding:28px 22px;transition:background .3s,border-color .3s,transform .3s}
 .skcard:hover{background:var(--s2);border-color:rgba(0,240,181,.25);transform:translateY(-4px)}
 .skicon{width:34px;height:34px;background:rgba(0,240,181,.08);border:1px solid rgba(0,240,181,.15);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
@@ -149,6 +168,18 @@ section{position:relative;z-index:1}
 .ptag-live{border-color:rgba(0,240,181,.4);background:rgba(0,240,181,.06)}
 .ptag-wip{border-color:rgba(255,45,107,.3);color:var(--c2);animation:pr 2s infinite}
 .ptag-pur{border-color:rgba(123,92,245,.3);color:var(--c3)}
+.ptag-int{border-color:rgba(255,255,255,.14);color:var(--muted)}
+.pmetrics{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin:22px 0 4px}
+.pmetric{background:rgba(0,240,181,.04);border:1px solid var(--border);padding:14px 12px}
+.pmetric .mv{font-family:var(--fd);font-size:1.9rem;color:var(--c1);line-height:1}
+.pmetric .ml{font-family:var(--fm);font-size:.5rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-top:5px;line-height:1.5}
+.pba{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:18px}
+.pba>div{background:var(--s2);border:1px solid var(--border);padding:18px 20px}
+.pba .k{font-family:var(--fm);font-size:.52rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px}
+.pba .before .k{color:var(--c2)}.pba .after .k{color:var(--c1)}
+.pba p{font-size:.78rem;line-height:1.8;color:var(--muted)}
+.pba p strong{color:var(--text);font-weight:600}
+@media(max-width:960px){.pmetrics{grid-template-columns:repeat(2,1fr)}.pba{grid-template-columns:1fr}}
 @keyframes pr{0%,100%{opacity:1}50%{opacity:.4}}
 .pn{font-family:var(--fd);font-size:2.3rem;letter-spacing:1px;line-height:1.1}
 .pd{font-size:.83rem;color:var(--muted);line-height:1.85;font-weight:400}
@@ -190,7 +221,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 [data-en],[data-tr]{transition:opacity .2s}
 
 /* RESPONSIVE */
-@media(max-width:1100px){.skgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1100px){.skgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:960px){
   #hero{flex-direction:column-reverse;padding:130px 40px 60px;gap:36px}
   .hphoto{width:100%;max-width:320px;align-self:center}
@@ -229,7 +260,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" id="btn-tr" onclick="setLang('tr')">TR</button>
     </div>
-    <a class="ncta" href="#contact" data-en="Hire Me" data-tr="İş Teklifi">Hire Me</a>
+    <a class="ncta" href="Isa_Seyitmurat_CV_EN.pdf" download data-en="Download CV" data-tr="CV İndir">Download CV</a>
   </div>
 </nav>
 
@@ -245,21 +276,22 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       <span class="l1">ISA</span>
       <span class="l2">SEYITMURAT</span>
     </h1>
-    <p class="hsub" data-en="Technical Engineer · CEO & Founder" data-tr="Teknik Mühendis · CEO & Kurucu">Technical Engineer · CEO &amp; Founder</p>
+    <p class="hsub" data-en="Technical Support Engineer · Internal Tooling & Automation" data-tr="Teknik Destek Mühendisi · Dahili Araçlar & Otomasyon">Technical Support Engineer · Internal Tooling &amp; Automation</p>
     <p class="hd"
-      data-en="Seven years of unbroken growth — from Linux servers and hardware repair to building hospital-grade deployment tools, managing B2B sales across GCC &amp; Turkey, and running a company as CEO."
-      data-tr="Yedi yıllık kesintisiz büyüme — Linux sunucuları ve donanım onarımından, hastane sınıfı araçlar geliştirmeye, GCC ve Türkiye'de B2B satış yönetimine ve CEO olarak şirket yönetimine kadar.">
-      Seven years of unbroken growth — from Linux servers and hardware repair to building hospital-grade deployment tools, managing B2B sales across GCC &amp; Turkey, and running a company as CEO.
+      data-en="I build the tools the support team runs on. At Ceiba Healthcare I designed and shipped &lt;strong&gt;eMonitoring&lt;/strong&gt; — the internal platform the bench uses to reach and repair 2,200+ bedside devices across 120+ hospitals."
+      data-tr="Destek ekibinin çalıştığı araçları geliştiriyorum. Ceiba Healthcare'de &lt;strong&gt;eMonitoring&lt;/strong&gt;'i tasarlayıp hayata geçirdim — ekibin 120+ hastanedeki 2.200+ yatak başı cihaza erişip onarmak için kullandığı dahili platform.">
+      I build the tools the support team runs on. At Ceiba Healthcare I designed and shipped <strong>eMonitoring</strong> — the internal platform the bench uses to reach and repair 2,200+ bedside devices across 120+ hospitals.
     </p>
     <div class="ha">
       <a href="#projects" class="btn btn-p" data-en="View Work" data-tr="İşleri Gör">View Work</a>
-      <a href="#contact" class="btn btn-g" data-en="Get in Touch" data-tr="İletişime Geç">Get in Touch</a>
+      <a href="Isa_Seyitmurat_CV_EN.pdf" download class="btn btn-g" data-en="CV (English)" data-tr="CV (İngilizce)">CV (English)</a>
+      <a href="Isa_Seyitmurat_CV_TR.pdf" download class="btn btn-g" data-en="CV (Türkçe)" data-tr="CV (Türkçe)">CV (Türkçe)</a>
     </div>
     <div class="hstats">
-      <div class="hstat"><div class="num">7+</div><div class="lbl" data-en="Years exp." data-tr="Yıl deneyim">Years exp.</div></div>
-      <div class="hstat"><div class="num">5</div><div class="lbl" data-en="Industries" data-tr="Sektör">Industries</div></div>
+      <div class="hstat"><div class="num">2,200+</div><div class="lbl" data-en="Devices supported" data-tr="Desteklenen cihaz">Devices supported</div></div>
+      <div class="hstat"><div class="num">120+</div><div class="lbl" data-en="Hospital sites" data-tr="Hastane sahası">Hospital sites</div></div>
+      <div class="hstat"><div class="num">2</div><div class="lbl" data-en="Internal products" data-tr="Dahili ürün">Internal products</div></div>
       <div class="hstat"><div class="num">3</div><div class="lbl" data-en="Languages" data-tr="Dil">Languages</div></div>
-      <div class="hstat"><div class="num">6</div><div class="lbl" data-en="Projects" data-tr="Proje">Projects</div></div>
     </div>
   </div>
   <div class="hphoto">
@@ -276,8 +308,8 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 <div class="ticker-wrap">
   <div class="ticker-row">
     <div class="ticker-track">
-      <span class="tki">Linux</span><span class="tki">Python</span><span class="tki">PostgreSQL</span><span class="tki">Grafana</span><span class="tki">AWS</span><span class="tki">n8n</span><span class="tki">Bash</span><span class="tki">Prometheus</span><span class="tki">Claude AI</span><span class="tki">REST APIs</span><span class="tki">SSH / VPN</span><span class="tki">Azure</span>
-      <span class="tki">Linux</span><span class="tki">Python</span><span class="tki">PostgreSQL</span><span class="tki">Grafana</span><span class="tki">AWS</span><span class="tki">n8n</span><span class="tki">Bash</span><span class="tki">Prometheus</span><span class="tki">Claude AI</span><span class="tki">REST APIs</span><span class="tki">SSH / VPN</span><span class="tki">Azure</span>
+      <span class="tki">Linux</span><span class="tki">TypeScript</span><span class="tki">Next.js</span><span class="tki">React</span><span class="tki">Python</span><span class="tki">PostgreSQL</span><span class="tki">Grafana</span><span class="tki">Node.js</span><span class="tki">n8n</span><span class="tki">Prometheus</span><span class="tki">REST APIs</span><span class="tki">SSH / VPN</span>
+      <span class="tki">Linux</span><span class="tki">TypeScript</span><span class="tki">Next.js</span><span class="tki">React</span><span class="tki">Python</span><span class="tki">PostgreSQL</span><span class="tki">Grafana</span><span class="tki">Node.js</span><span class="tki">n8n</span><span class="tki">Prometheus</span><span class="tki">REST APIs</span><span class="tki">SSH / VPN</span>
     </div>
   </div>
   <div class="ticker-row" style="margin-top:2px">
@@ -339,14 +371,19 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       <div class="ski">Linux (Ubuntu)</div><div class="ski">PowerShell</div><div class="ski">Bash Scripting</div><div class="ski">SSH / VPN</div><div class="ski">AWS · Azure</div><div class="ski">Windows Server</div>
     </div>
     <div class="skcard">
+      <div class="skicon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div class="skt" data-en="Development" data-tr="Geliştirme">Development</div>
+      <div class="ski">TypeScript</div><div class="ski">React</div><div class="ski">Next.js</div><div class="ski">Node.js</div><div class="ski">Python</div><div class="ski">REST APIs · Git</div>
+    </div>
+    <div class="skcard">
       <div class="skicon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
       <div class="skt" data-en="Data & Monitoring" data-tr="Veri & İzleme">Data &amp; Monitoring</div>
       <div class="ski">PostgreSQL</div><div class="ski">Grafana</div><div class="ski">Prometheus</div><div class="ski">DBeaver</div><div class="ski" data-en="Log Analysis" data-tr="Log Analizi">Log Analysis</div><div class="ski" data-en="Network Admin" data-tr="Ağ Yönetimi">Network Admin</div>
     </div>
     <div class="skcard">
       <div class="skicon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-      <div class="skt" data-en="Automation & Dev" data-tr="Otomasyon & Dev">Automation &amp; Dev</div>
-      <div class="ski">Python</div><div class="ski">n8n</div><div class="ski">REST APIs</div><div class="ski" data-en="Web Scraping" data-tr="Web Kazıma">Web Scraping</div><div class="ski" data-en="Email Pipelines" data-tr="E-posta Hatları">Email Pipelines</div><div class="ski" data-en="Video Pipelines" data-tr="Video Hatları">Video Pipelines</div>
+      <div class="skt" data-en="Automation" data-tr="Otomasyon">Automation</div>
+      <div class="ski">n8n</div><div class="ski" data-en="Workflow Design" data-tr="İş Akışı Tasarımı">Workflow Design</div><div class="ski" data-en="Web Scraping" data-tr="Web Kazıma">Web Scraping</div><div class="ski" data-en="Email Pipelines" data-tr="E-posta Hatları">Email Pipelines</div><div class="ski">Slack · Zendesk</div><div class="ski">PowerShell</div>
     </div>
     <div class="skcard">
       <div class="skicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
@@ -377,7 +414,8 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       <div class="eright">
         <div class="erole" data-en="Technical Support Engineer" data-tr="Teknik Destek Mühendisi">Technical Support Engineer</div>
         <ul class="ebl">
-          <li data-en="Designed and built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click." data-tr="MobileCart Otomatik Kurulum Aracını tasarlayıp geliştirdim: tek bir çift tıklamayla 11 aşamalı hastane izleme yığınını (PowerShell, Prometheus, Grafana) kuran bağımsız bir Windows GUI.">Designed and built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click.</li>
+          <li data-en="Designed and built &lt;strong&gt;eMonitoring&lt;/strong&gt; — the support team's internal platform (Next.js, TypeScript) for bed inventory, device checks, remote box access, VPN and server registers, ticketing and audit." data-tr="&lt;strong&gt;eMonitoring&lt;/strong&gt;'i tasarlayıp geliştirdim — destek ekibinin yatak envanteri, cihaz kontrolleri, uzaktan kutu erişimi, VPN ve sunucu kayıtları, talep yönetimi ve denetim için dahili platformu (Next.js, TypeScript).">Designed and built <strong>eMonitoring</strong> — the support team's internal platform (Next.js, TypeScript) for bed inventory, device checks, remote box access, VPN and server registers, ticketing and audit.</li>
+          <li data-en="Built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click." data-tr="MobileCart Otomatik Kurulum Aracını geliştirdim: tek bir çift tıklamayla 11 aşamalı hastane izleme yığınını (PowerShell, Prometheus, Grafana) kuran bağımsız bir Windows GUI.">Built the MobileCart Automated Installer: a standalone Windows GUI deploying an 11-phase hospital monitoring stack (PowerShell, Prometheus, Grafana) from a single double-click.</li>
           <li data-en="Maintain Linux (Ubuntu) production systems in a zero-downtime healthcare environment; isolate and resolve complex failures through deep log analysis on Linux and Windows." data-tr="Sıfır kesinti toleranslı sağlık ortamında Linux (Ubuntu) üretim sistemlerini yönetiyor; Linux ve Windows'ta derin log analizi ile karmaşık arızaları izole edip çözüyorum.">Maintain Linux (Ubuntu) production systems in a zero-downtime healthcare environment; isolate and resolve complex failures through deep log analysis on Linux and Windows.</li>
           <li data-en="Manage PostgreSQL databases — insertion, retrieval, auditing, and integrity validation; monitor real-time service health via Grafana dashboards." data-tr="PostgreSQL veritabanlarını yönetiyorum — ekleme, sorgulama, denetim ve bütünlük doğrulaması; Grafana dashboardları ile gerçek zamanlı servis sağlığını izliyorum.">Manage PostgreSQL databases — insertion, retrieval, auditing, and integrity validation; monitor real-time service health via Grafana dashboards.</li>
           <li data-en="Maintain SSH / VPN infrastructure; author technical documentation and deliver hands-on end-user training sessions on a rotating 3-shift schedule." data-tr="SSH / VPN altyapısını yönetiyor; 3 vardiyalı rotasyonla teknik dokümantasyon hazırlıyor ve uygulamalı son kullanıcı eğitimleri veriyorum.">Maintain SSH / VPN infrastructure; author technical documentation and deliver hands-on end-user training sessions on a rotating 3-shift schedule.</li>
@@ -387,7 +425,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 
     <div class="ecard rev d2">
       <div class="eleft">
-        <div class="eperiod" data-en="Aug 2023<br>— Present" data-tr="Ağu 2023<br>— Günümüz">Aug 2023<br>— Present</div>
+        <div class="eperiod" data-en="Apr 2022<br>— Present" data-tr="Nis 2022<br>— Günümüz">Apr 2022<br>— Present</div>
         <div class="epromote">↑ <span data-en="Promoted Jan 2026" data-tr="Ocak 2026 Terfi">Promoted Jan 2026</span></div>
         <div class="eco">EPI-UPS</div>
       </div>
@@ -413,6 +451,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
           <li data-en="Founded a premium B2B event services company — VIP fleet management, simultaneous interpretation (20+ languages), international exhibition logistics, and 3D stand design for corporate congresses and trade fairs." data-tr="Premium bir B2B etkinlik hizmetleri şirketi kurdum — VIP filo yönetimi, simultane tercümanlık (20+ dil), uluslararası fuar lojistiği ve kurumsal kongreler ile ticaret fuarları için 3D stand tasarımı.">Founded a premium B2B event services company — VIP fleet management, simultaneous interpretation (20+ languages), international exhibition logistics, and 3D stand design for corporate congresses and trade fairs.</li>
           <li data-en="Drive all business development, client acquisition, and strategic partnerships while managing end-to-end service delivery for international clients." data-tr="Uluslararası müşteriler için uçtan uca hizmet sunumunu yönetirken tüm iş geliştirme, müşteri kazanımı ve stratejik ortaklıkları yürütüyorum.">Drive all business development, client acquisition, and strategic partnerships while managing end-to-end service delivery for international clients.</li>
           <li data-en="Built the company platform from scratch; oversee brand, digital marketing, and service portfolio growth." data-tr="Şirket platformunu sıfırdan inşa ettim; marka, dijital pazarlama ve hizmet portföyü büyümesini yönetiyorum.">Built the company platform from scratch; oversee brand, digital marketing, and service portfolio growth.</li>
+          <li data-en="Automating the front desk with &lt;strong&gt;n8n&lt;/strong&gt; — inbound email triage, drafted replies, and Slack escalation for anything urgent." data-tr="Ön büroyu &lt;strong&gt;n8n&lt;/strong&gt; ile otomatikleştiriyorum — gelen e-postanın sınıflandırılması, yanıt taslakları ve acil işler için Slack'e bildirim.">Automating the front desk with <strong>n8n</strong> — inbound email triage, drafted replies, and Slack escalation for anything urgent.</li>
         </ul>
       </div>
     </div>
@@ -461,24 +500,42 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
     <div class="pc feat rev d1">
       <div>
         <div class="pnum">01</div>
-        <div class="ptags"><span class="ptag">Web Dev</span><span class="ptag">B2B</span><span class="ptag ptag-live">Live</span></div>
-        <div class="pn" style="margin-top:18px">Seventist</div>
+        <div class="ptags"><span class="ptag ptag-pur">Next.js &middot; TypeScript</span><span class="ptag">Node.js &middot; SSH</span><span class="ptag ptag-int" data-en="Internal" data-tr="Dahili">Internal</span></div>
+        <div class="pn" style="margin-top:18px">eMonitoring</div>
         <p class="pd" style="margin-top:14px"
-          data-en="A professional B2B event services platform built to convert. Connects businesses with premium event staffing, simultaneous interpretation (20+ languages), VIP logistics, and 3D stand production — from Istanbul to global trade fairs."
-          data-tr="Dönüşüm odaklı profesyonel bir B2B etkinlik hizmetleri platformu. İşletmeleri premium etkinlik personeli, simultane tercümanlık (20+ dil), VIP lojistik ve 3D stand prodüksiyonuyla buluşturuyor.">
-          A professional B2B event services platform built to convert. Connects businesses with premium event staffing, simultaneous interpretation (20+ languages), VIP logistics, and 3D stand production — from Istanbul to global trade fairs.
+          data-en="The internal platform Ceiba Healthcare&rsquo;s support team runs on. Bed data lived in three registers that never agreed; reaching a device meant dialling a per-hospital VPN and SSH-ing from a laptop; every ticket was retyped by hand from a screenshot. eMonitoring replaced that whole routine with one browser workflow."
+          data-tr="Ceiba Healthcare destek ekibinin &ccedil;alı&scedil;tığı dahili platform. Yatak verisi birbirini tutmayan &uuml;&ccedil; ayrı kayıtta duruyordu; bir cihaza eri&scedil;mek i&ccedil;in hastaneye &ouml;zel VPN &ccedil;evirip laptoptan SSH gerekiyordu; her talep ekran g&ouml;r&uuml;nt&uuml;s&uuml;nden elle yazılıyordu. eMonitoring bu rutinin tamamını tek bir tarayıcı akı&scedil;ıyla deği&scedil;tirdi.">
+          The internal platform Ceiba Healthcare&rsquo;s support team runs on. Bed data lived in three registers that never agreed; reaching a device meant dialling a per-hospital VPN and SSH-ing from a laptop; every ticket was retyped by hand from a screenshot. eMonitoring replaced that whole routine with one browser workflow.
         </p>
-        <a href="https://seventist.netlify.app/anasayfa" target="_blank" class="pl" style="margin-top:24px" data-en="Visit Live Site →" data-tr="Canlı Siteyi Ziyaret Et →">Visit Live Site →</a>
+        <div class="pba">
+          <div class="before">
+            <div class="k" data-en="Before" data-tr="&Ouml;nce">Before</div>
+            <p data-en="Four tools for every fault &mdash; VPN client, SSH terminal, spreadsheet, Zendesk. One 156-bed hospital was invisible to the tooling entirely."
+               data-tr="Her arıza i&ccedil;in d&ouml;rt ara&ccedil; &mdash; VPN istemcisi, SSH terminali, Excel, Zendesk. 156 yataklı bir hastane ara&ccedil;larda hi&ccedil; g&ouml;r&uuml;nm&uuml;yordu.">Four tools for every fault &mdash; VPN client, SSH terminal, spreadsheet, Zendesk. One 156-bed hospital was invisible to the tooling entirely.</p>
+          </div>
+          <div class="after">
+            <div class="k" data-en="After" data-tr="Sonra">After</div>
+            <p data-en="&lt;strong&gt;One browser workflow.&lt;/strong&gt; Find the bed, open a console, run the check, raise the ticket &mdash; without leaving the page."
+               data-tr="&lt;strong&gt;Tek bir tarayıcı akı&scedil;ı.&lt;/strong&gt; Yatağı bul, konsolu a&ccedil;, kontrol&uuml; &ccedil;alı&scedil;tır, talebi olu&scedil;tur &mdash; sayfadan &ccedil;ıkmadan."><strong>One browser workflow.</strong> Find the bed, open a console, run the check, raise the ticket &mdash; without leaving the page.</p>
+          </div>
+        </div>
+        <div class="pmetrics">
+          <div class="pmetric"><div class="mv">2,200+</div><div class="ml" data-en="Bedside devices" data-tr="Yatak ba&scedil;ı cihaz">Bedside devices</div></div>
+          <div class="pmetric"><div class="mv">120+</div><div class="ml" data-en="Hospital sites" data-tr="Hastane sahası">Hospital sites</div></div>
+          <div class="pmetric"><div class="mv">~2,900</div><div class="ml" data-en="Beds unified" data-tr="Birle&scedil;en yatak">Beds unified</div></div>
+          <div class="pmetric"><div class="mv">190</div><div class="ml" data-en="TypeScript modules" data-tr="TypeScript mod&uuml;l&uuml;">TypeScript modules</div></div>
+        </div>
       </div>
       <div>
         <ul class="pf">
-          <li data-en="Hostess & reception staffing for fairs & congresses" data-tr="Fuar ve kongreler için hostes & resepsiyon personeli">Hostess &amp; reception staffing for fairs &amp; congresses</li>
-          <li data-en="Simultaneous interpretation — 20+ languages" data-tr="Simultane tercümanlık — 20+ dil">Simultaneous interpretation — 20+ languages</li>
-          <li data-en="VIP transfer fleet: S-Class, V-Class, Minibus" data-tr="VIP transfer filosu: S-Class, V-Class, Minibüs">VIP transfer fleet: S-Class, V-Class, Minibus</li>
-          <li data-en="3D stand design + full on-site installation" data-tr="3D stand tasarımı + tam yerinde kurulum">3D stand design + full on-site installation</li>
-          <li data-en="Catering: Bronze to Gold tier packages" data-tr="Catering: Bronze'dan Gold'a paket seçenekleri">Catering: Bronze to Gold tier packages</li>
-          <li data-en="Exhibition logistics — ATA carnet, customs, shipping" data-tr="Fuar lojistiği — ATA Karnesi, gümrük, nakliye">Exhibition logistics — ATA carnet, customs, shipping</li>
-          <li data-en="Digital services: web, branding, social media" data-tr="Dijital hizmetler: web, marka kimliği, sosyal medya">Digital services: web, branding, social media</li>
+          <li data-en="One bed register merged from three sources &mdash; hardware records, an address list, and 97 hospital commissioning workbooks" data-tr="&Uuml;&ccedil; kaynaktan birle&scedil;tirilen tek yatak kaydı &mdash; donanım kayıtları, adres listesi ve 97 hastane devreye alma dosyası">One bed register merged from three sources &mdash; hardware records, an address list, and 97 hospital commissioning workbooks</li>
+          <li data-en="Importer reads Excel columns by header in Turkish or English, and reports every fault it cannot resolve" data-tr="İ&ccedil;e aktarıcı Excel s&uuml;tunlarını T&uuml;rk&ccedil;e ya da İngilizce ba&scedil;lığından okur, &ccedil;&ouml;zemediği her hatayı raporlar">Importer reads Excel columns by header in Turkish or English, and reports every fault it cannot resolve</li>
+          <li data-en="Browser SSH console onto 2,220 devices &mdash; the browser posts an id, never a command" data-tr="2.220 cihaza tarayıcı &uuml;st&uuml;nden SSH konsolu &mdash; tarayıcı komut değil kimlik g&ouml;nderir">Browser SSH console onto 2,220 devices &mdash; the browser posts an id, never a command</li>
+          <li data-en="Every repair names what it changes and the exact command, before it runs" data-tr="Her onarım, &ccedil;alı&scedil;madan &ouml;nce neyi deği&scedil;tirdiğini ve tam komutu g&ouml;sterir">Every repair names what it changes and the exact command, before it runs</li>
+          <li data-en="Guided device checks that end on a verdict code with a full transcript" data-tr="Karar koduyla ve tam d&ouml;k&uuml;mle biten rehberli cihaz kontrolleri">Guided device checks that end on a verdict code with a full transcript</li>
+          <li data-en="One-click Zendesk ticket &mdash; hospital, ward, bed, address and transcript filled in, raised in EN or TR" data-tr="Tek tıkla Zendesk talebi &mdash; hastane, servis, yatak, adres ve d&ouml;k&uuml;m otomatik dolu, TR veya EN">One-click Zendesk ticket &mdash; hospital, ward, bed, address and transcript filled in, raised in EN or TR</li>
+          <li data-en="Role-scoped access: signed sessions and server-side field stripping, so a hospital never receives admin data" data-tr="Rol bazlı eri&scedil;im: imzalı oturumlar ve sunucu tarafında alan ayıklama &mdash; hastaneye y&ouml;netici verisi ula&scedil;maz">Role-scoped access: signed sessions and server-side field stripping, so a hospital never receives admin data</li>
+          <li data-en="Runbooks, change requests and an audit log for the rest of the estate" data-tr="Geri kalan envanter i&ccedil;in runbook&rsquo;lar, deği&scedil;iklik talepleri ve denetim kaydı">Runbooks, change requests and an audit log for the rest of the estate</li>
         </ul>
       </div>
     </div>
@@ -501,6 +558,19 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 
     <div class="pc rev d3">
       <div class="pnum">03</div>
+      <div class="ptags"><span class="ptag">Web Dev</span><span class="ptag ptag-pur">n8n</span><span class="ptag ptag-live">Live</span></div>
+      <div class="pn" style="margin-top:18px">Seventist</div>
+      <p class="pd" data-en="A professional B2B event services platform built to convert. Connects businesses with premium event staffing, simultaneous interpretation (20+ languages), VIP logistics, and 3D stand production — from Istanbul to global trade fairs." data-tr="Dönüşüm odaklı profesyonel bir B2B etkinlik hizmetleri platformu. İşletmeleri premium etkinlik personeli, simultane tercümanlık (20+ dil), VIP lojistik ve 3D stand prodüksiyonuyla buluşturuyor.">A professional B2B event services platform built to convert. Connects businesses with premium event staffing, simultaneous interpretation (20+ languages), VIP logistics, and 3D stand production — from Istanbul to global trade fairs.</p>
+      <ul class="pf">
+        <li data-en="Simultaneous interpretation &mdash; 20+ languages" data-tr="Simultane terc&uuml;me &mdash; 20+ dil">Simultaneous interpretation &mdash; 20+ languages</li>
+        <li data-en="VIP transfer fleet, staffing, catering and exhibition logistics" data-tr="VIP transfer filosu, personel, catering ve fuar lojistiği">VIP transfer fleet, staffing, catering and exhibition logistics</li>
+        <li data-en="n8n agent in progress: email triage, drafted replies, Slack escalation" data-tr="n8n ajanı geli&scedil;tiriliyor: e-posta sınıflandırma, yanıt taslağı, Slack bildirimi">n8n agent in progress: email triage, drafted replies, Slack escalation</li>
+      </ul>
+      <a href="https://seventist.netlify.app/anasayfa" target="_blank" rel="noopener" class="pl" data-en="Visit Live Site &rarr;" data-tr="Canlı Siteyi Ziyaret Et &rarr;">Visit Live Site &rarr;</a>
+    </div>
+
+    <div class="pc rev d4">
+      <div class="pnum">04</div>
       <div class="ptags"><span class="ptag">Web Dev</span><span class="ptag">Sales</span><span class="ptag ptag-live">Live</span></div>
       <div class="pn" style="margin-top:18px" data-en="EPI-UPS Corporate Website" data-tr="EPI-UPS Kurumsal Web Sitesi">EPI-UPS<br>Corporate Website</div>
       <p class="pd" data-en="Built the regional corporate website from scratch for EPI-UPS — driving inbound leads and product visibility across GCC and Turkey. Designed to convert technical buyers researching enterprise UPS solutions (1 kVA–1,200 kVA)."
@@ -514,24 +584,24 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       </ul>
     </div>
 
-    <div class="pc rev d4">
-      <div class="pnum">04</div>
-      <div class="ptags"><span class="ptag">Python</span><span class="ptag">Automation</span></div>
-      <div class="pn" style="margin-top:18px" data-en="Bulk Email Sender" data-tr="Toplu E-posta Gönderici">Bulk Email Sender</div>
-      <p class="pd" data-en="Upload an Excel file, pick a language, run. Reads contacts, filters by language code, and dispatches personalised emails in bulk — zero manual effort per send."
-         data-tr="Bir Excel dosyası yükle, dil seç, çalıştır. Kişileri okur, dil koduna göre filtreler ve kişiselleştirilmiş e-postaları toplu olarak gönderir.">
-        Upload an Excel file, pick a language, run. Reads contacts, filters by language code, and dispatches personalised emails in bulk — zero manual effort per send.
-      </p>
-      <ul class="pf">
-        <li data-en="Excel-driven contact input (openpyxl)" data-tr="Excel tabanlı kişi girişi (openpyxl)">Excel-driven contact input (openpyxl)</li>
-        <li data-en="Bilingual dispatch — EN and TR scripts" data-tr="İki dilli gönderim — EN ve TR scriptleri">Bilingual dispatch — EN and TR scripts</li>
-        <li data-en="SMTP delivery with full error handling" data-tr="Tam hata yönetimli SMTP teslimatı">SMTP delivery with full error handling</li>
-      </ul>
-      <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="GitHub →" data-tr="GitHub →">GitHub →</a>
-    </div>
-
     <div class="pc rev d1">
       <div class="pnum">05</div>
+      <div class="ptags"><span class="ptag">n8n</span><span class="ptag ptag-pur">AI Agent</span><span class="ptag ptag-wip" data-en="In Progress" data-tr="Geliştiriliyor">In Progress</span></div>
+      <div class="pn" style="margin-top:18px" data-en="Social Media AI Agent" data-tr="Sosyal Medya AI Ajanı">Social Media<br>AI Agent</div>
+      <p class="pd" data-en="Autonomous agent that creates and publishes content across all major platforms — no human in the loop. n8n orchestration generates on-brand posts and publishes while you sleep."
+         data-tr="Tüm büyük platformlarda içerik oluşturup yayınlayan otonom ajan — döngüde insan yok. n8n orkestrasyonu markaya uygun gönderiler oluşturur ve siz uyurken yayınlar.">
+        Autonomous agent that creates and publishes content across all major platforms — no human in the loop. n8n orchestration generates on-brand posts and publishes while you sleep.
+      </p>
+      <ul class="pf">
+        <li data-en="AI-generated content per platform format" data-tr="Platform formatına göre AI içeriği">AI-generated content per platform format</li>
+        <li data-en="Auto-publish: Instagram, X, LinkedIn & more" data-tr="Otomatik paylaşım: Instagram, X, LinkedIn ve daha fazlası">Auto-publish: Instagram, X, LinkedIn &amp; more</li>
+        <li data-en="n8n orchestration + intelligent scheduling" data-tr="n8n orkestrasyonu + akıllı zamanlama">n8n orchestration + intelligent scheduling</li>
+      </ul>
+      <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="Follow on GitHub →" data-tr="GitHub'da Takip Et →">Follow on GitHub →</a>
+    </div>
+
+    <div class="pc rev d2">
+      <div class="pnum">06</div>
       <div class="ptags"><span class="ptag">Python</span><span class="ptag">Scraping</span><span class="ptag">Data</span></div>
       <div class="pn" style="margin-top:18px" data-en="Web Intel Scraper" data-tr="Web İstihbarat Toplayıcısı">Web Intel<br>Scraper</div>
       <p class="pd" data-en="Deep-crawl tool that extracts structured business intelligence — company, email, phone, country — from any target site and exports a clean, sortable Excel report."
@@ -546,20 +616,20 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
       <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="GitHub →" data-tr="GitHub →">GitHub →</a>
     </div>
 
-    <div class="pc rev d2">
-      <div class="pnum">06</div>
-      <div class="ptags"><span class="ptag">n8n</span><span class="ptag ptag-pur">AI Agent</span><span class="ptag ptag-wip" data-en="In Progress" data-tr="Geliştiriliyor">In Progress</span></div>
-      <div class="pn" style="margin-top:18px" data-en="Social Media AI Agent" data-tr="Sosyal Medya AI Ajanı">Social Media<br>AI Agent</div>
-      <p class="pd" data-en="Autonomous agent that creates and publishes content across all major platforms — no human in the loop. n8n orchestration generates on-brand posts and publishes while you sleep."
-         data-tr="Tüm büyük platformlarda içerik oluşturup yayınlayan otonom ajan — döngüde insan yok. n8n orkestrasyonu markaya uygun gönderiler oluşturur ve siz uyurken yayınlar.">
-        Autonomous agent that creates and publishes content across all major platforms — no human in the loop. n8n orchestration generates on-brand posts and publishes while you sleep.
+    <div class="pc rev d3">
+      <div class="pnum">07</div>
+      <div class="ptags"><span class="ptag">Python</span><span class="ptag">Automation</span></div>
+      <div class="pn" style="margin-top:18px" data-en="Bulk Email Sender" data-tr="Toplu E-posta Gönderici">Bulk Email Sender</div>
+      <p class="pd" data-en="Upload an Excel file, pick a language, run. Reads contacts, filters by language code, and dispatches personalised emails in bulk — zero manual effort per send."
+         data-tr="Bir Excel dosyası yükle, dil seç, çalıştır. Kişileri okur, dil koduna göre filtreler ve kişiselleştirilmiş e-postaları toplu olarak gönderir.">
+        Upload an Excel file, pick a language, run. Reads contacts, filters by language code, and dispatches personalised emails in bulk — zero manual effort per send.
       </p>
       <ul class="pf">
-        <li data-en="AI-generated content per platform format" data-tr="Platform formatına göre AI içeriği">AI-generated content per platform format</li>
-        <li data-en="Auto-publish: Instagram, X, LinkedIn & more" data-tr="Otomatik paylaşım: Instagram, X, LinkedIn ve daha fazlası">Auto-publish: Instagram, X, LinkedIn &amp; more</li>
-        <li data-en="n8n orchestration + intelligent scheduling" data-tr="n8n orkestrasyonu + akıllı zamanlama">n8n orchestration + intelligent scheduling</li>
+        <li data-en="Excel-driven contact input (openpyxl)" data-tr="Excel tabanlı kişi girişi (openpyxl)">Excel-driven contact input (openpyxl)</li>
+        <li data-en="Bilingual dispatch — EN and TR scripts" data-tr="İki dilli gönderim — EN ve TR scriptleri">Bilingual dispatch — EN and TR scripts</li>
+        <li data-en="SMTP delivery with full error handling" data-tr="Tam hata yönetimli SMTP teslimatı">SMTP delivery with full error handling</li>
       </ul>
-      <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="Follow on GitHub →" data-tr="GitHub'da Takip Et →">Follow on GitHub →</a>
+      <a href="https://github.com/isaseyit" target="_blank" class="pl" data-en="GitHub →" data-tr="GitHub →">GitHub →</a>
     </div>
 
   </div>
@@ -615,19 +685,24 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 
 <script>
 /* LANGUAGE */
-let currentLang = localStorage.getItem('lang') || 'en';
+function readLang(){ try { return localStorage.getItem('lang'); } catch (e) { return null; } }
+function saveLang(v){ try { localStorage.setItem('lang', v); } catch (e) {} }
+let currentLang = readLang() || 'en';
 function setLang(lang) {
   currentLang = lang;
-  localStorage.setItem('lang', lang);
+  saveLang(lang);
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
   document.documentElement.lang = lang;
+  document.querySelectorAll('a.ncta[download]').forEach(a => {
+    a.setAttribute('href', lang === 'tr' ? 'Isa_Seyitmurat_CV_TR.pdf' : 'Isa_Seyitmurat_CV_EN.pdf');
+  });
   document.querySelectorAll('[data-en]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
     if (!val) return;
     if (val.includes('<')) el.innerHTML = val; else el.textContent = val;
   });
-  document.title = lang === 'tr' ? 'Isa Seyitmurat — Teknik Mühendis & CEO' : 'Isa Seyitmurat — Technical Engineer & CEO';
+  document.title = lang === 'tr' ? 'Isa Seyitmurat — Teknik Destek Mühendisi' : 'Isa Seyitmurat — Technical Support Engineer';
 }
 setLang(currentLang);
 
