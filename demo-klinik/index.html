@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doğa Diş Kliniği · Online Randevu (Demo)</title>
+<meta name="description" content="PilotFactory randevu otomasyonu demosu: web formu ve yapay zekâ sohbet asistanı.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat@1.42.6/dist/style.css" rel="stylesheet">
+<style>
+  :root{
+    --lacivert:#0B1F3A; --lacivert2:#14508A; --turkuaz:#00C2B2; --turkuaz2:#00A99B;
+    --zemin:#F4F7FA; --kart:#FFFFFF; --cizgi:#DCE3EC; --yazi:#1B2733; --soluk:#5B6B7C;
+    --golge:0 18px 50px rgba(11,31,58,.12);
+    --chat--color-primary:#00C2B2; --chat--color-primary-shade-50:#00A99B; --chat--color-secondary:#0B1F3A;
+    --chat--header--background:#0B1F3A; --chat--toggle--background:#00C2B2; --chat--toggle--hover--background:#00A99B;
+    --chat--message--user--background:#00C2B2; --chat--window--width:380px; --chat--window--height:560px;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Plus Jakarta Sans",system-ui,Arial,sans-serif;color:var(--yazi);background:var(--zemin);line-height:1.55}
+  a{color:inherit}
+  .demo-bant{background:var(--lacivert);color:#cfe9ee;font-size:13px;text-align:center;padding:8px 16px}
+  .demo-bant b{color:var(--turkuaz)}
+  header{max-width:1120px;margin:0 auto;padding:22px 20px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;color:var(--lacivert)}
+  .logo span{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--turkuaz),var(--lacivert2));color:#fff;font-size:20px}
+  nav a{margin-left:22px;text-decoration:none;font-weight:600;color:var(--soluk)} nav a:hover{color:var(--lacivert)}
+  .hero{max-width:1120px;margin:0 auto;padding:40px 20px 70px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .etiket{display:inline-block;background:#E3F8F6;color:#00877C;font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px}
+  h1{font-size:clamp(34px,4.6vw,54px);line-height:1.08;margin:16px 0;color:var(--lacivert);letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--turkuaz2)}
+  .alt{font-size:18px;color:var(--soluk);max-width:520px}
+  .dugmeler{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:14px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:15px;font-family:inherit}
+  .btn.ana{background:var(--turkuaz);color:#fff;box-shadow:0 10px 24px rgba(0,194,178,.35)} .btn.ana:hover{background:var(--turkuaz2)}
+  .btn.ikinci{background:#fff;color:var(--lacivert);border:1px solid var(--cizgi)}
+  .rozetler{display:flex;gap:22px;margin-top:30px;color:var(--soluk);font-size:14px;flex-wrap:wrap}
+  .rozetler b{display:block;font-size:22px;color:var(--lacivert)}
+  .gorsel{position:relative;border-radius:28px;background:linear-gradient(160deg,#0B1F3A 0%,#14508A 70%,#00C2B2 140%);min-height:420px;box-shadow:var(--golge);overflow:hidden;padding:28px;color:#fff}
+  .gorsel .baloncuk{background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px 14px;margin:10px 0;max-width:84%;font-size:14px}
+  .gorsel .baloncuk.hasta{margin-left:auto;background:#00C2B2;border-color:transparent}
+  .gorsel .baslik{font-weight:700;opacity:.85;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .gorsel .takvim{position:absolute;right:22px;bottom:22px;background:#fff;color:var(--lacivert);border-radius:16px;padding:12px 16px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .gorsel .takvim b{display:block;font-size:15px}
+  section{max-width:1120px;margin:0 auto;padding:60px 20px}
+  h2{font-size:clamp(26px,3vw,36px);color:var(--lacivert);margin:0 0 10px;letter-spacing:-.01em}
+  .acik{color:var(--soluk);margin:0 0 30px}
+  .adimlar{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .adim{background:#fff;border:1px solid var(--cizgi);border-radius:20px;padding:24px}
+  .adim i{font-style:normal;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#E3F8F6;color:#00877C;font-weight:800;margin-bottom:12px}
+  .adim h3{margin:0 0 6px;color:var(--lacivert);font-size:17px}
+  .adim p{margin:0;color:var(--soluk);font-size:14px}
+  .form-alani{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}
+  .kart{background:#fff;border:1px solid var(--cizgi);border-radius:24px;padding:28px;box-shadow:var(--golge)}
+  label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px;color:var(--lacivert)}
+  input,select{width:100%;padding:13px 14px;border:1px solid var(--cizgi);border-radius:12px;font:inherit;background:#fbfcfe}
+  input:focus,select:focus{outline:2px solid #9fe9e2;border-color:var(--turkuaz)}
+  .iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .kvkk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--soluk);margin-top:16px}
+  .kvkk input{width:auto;margin-top:3px}
+  .sonuc{display:none;margin-top:18px;border-radius:16px;padding:16px 18px;font-size:15px}
+  .sonuc.ok{display:block;background:#E3F6EE;color:#14704A;border:1px solid #bfe8d4}
+  .sonuc.hata{display:block;background:#FFF4E0;color:#8a5a00;border:1px solid #ffe0a6}
+  .sonuc b{display:block;margin-bottom:4px}
+  .bilgi li{margin:10px 0;color:var(--soluk)} .bilgi b{color:var(--lacivert)}
+  footer{border-top:1px solid var(--cizgi);margin-top:30px}
+  footer div{max-width:1120px;margin:0 auto;padding:26px 20px;display:flex;justify-content:space-between;align-items:center;color:var(--soluk);font-size:13px;gap:16px;flex-wrap:wrap}
+  .pf{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;color:var(--lacivert)}
+  @media (max-width:860px){.hero,.form-alani{grid-template-columns:1fr}.adimlar{grid-template-columns:1fr}nav{display:none}.gorsel{min-height:340px}}
+</style>
+</head>
+<body>
+<div class="demo-bant">Bu sayfa bir <b>PilotFactory demosudur</b>: form ve sohbet asistanı gerçek otomasyona bağlıdır (test modu).</div>
+<header>
+  <div class="logo"><span>🦷</span> Doğa Diş Kliniği</div>
+  <nav><a href="#nasil">Nasıl çalışır?</a><a href="#randevu">Randevu</a><a href="#iletisim">İletişim</a></nav>
+</header>
+
+<div class="hero">
+  <div>
+    <span class="etiket">7/24 online randevu</span>
+    <h1>Randevunuz <em>30 saniyede</em> hazır.</h1>
+    <p class="alt">Boş saati görün, formu doldurun ya da asistanımıza yazın. Randevunuz anında kliniğin takvimine işlenir; e-posta adresiniz varsa takviminize de düşer.</p>
+    <div class="dugmeler">
+      <a class="btn ana" href="#randevu">Randevu al →</a>
+      <button class="btn ikinci" id="sohbetAc" type="button">💬 Asistana yaz</button>
+    </div>
+    <div class="rozetler"><div><b>Anında</b>onay</div><div><b>7/24</b>yanıt</div><div><b>KVKK</b>uyumlu</div></div>
+  </div>
+  <div class="gorsel" aria-hidden="true">
+    <div class="baslik">Defne · Klinik asistanı</div>
+    <div class="baloncuk hasta">Pazartesi 15:00 muayene için yer var mı?</div>
+    <div class="baloncuk">Evet, 9 Kasım Pazartesi 15:00 boş. Adınızı ve telefonunuzu yazar mısınız?</div>
+    <div class="baloncuk hasta">Ayşe Yılmaz, 0555 000 00 01</div>
+    <div class="baloncuk">Özet: Pazartesi 15:00, muayene. Onaylıyor musunuz?</div>
+    <div class="takvim">📅 <b>Randevu oluşturuldu</b>Pazartesi 15:00 · Muayene</div>
+  </div>
+</div>
+
+<section id="nasil">
+  <h2>Nasıl çalışır?</h2>
+  <p class="acik">Arka planda kliniğin takvimi, çalışma saatleri ve tatilleri kontrol edilir.</p>
+  <div class="adimlar">
+    <div class="adim"><i>1</i><h3>Gün ve saati seçin</h3><p>Saat doluysa ya da klinik kapalıysa size en yakın boş saatler önerilir.</p></div>
+    <div class="adim"><i>2</i><h3>Bilgilerinizi bırakın</h3><p>Ad, telefon ve işlem türü yeterli. Sağlık şikâyetinizi yazmanıza gerek yok.</p></div>
+    <div class="adim"><i>3</i><h3>Onay anında gelsin</h3><p>Randevu kliniğin takvimine işlenir; klinik ekibine de bildirim gider.</p></div>
+  </div>
+</section>
+
+<section id="randevu">
+  <div class="form-alani">
+    <div>
+      <h2>Online randevu</h2>
+      <p class="acik">Formu gönderdiğinizde randevunuz doğrudan kliniğin takvimine işlenir.</p>
+      <ul class="bilgi">
+        <li><b>Çalışma saatleri:</b> Hafta içi 09:00–18:00 (öğle 12:30–13:30)</li>
+        <li><b>Randevu süresi:</b> 30 dakika</li>
+        <li><b>Değişiklik / iptal:</b> Sohbet asistanına yazmanız yeterli</li>
+      </ul>
+    </div>
+    <form class="kart" id="randevuFormu" novalidate>
+      <label for="ad">Ad Soyad</label>
+      <input id="ad" required autocomplete="name" placeholder="Ayşe Yılmaz">
+      <label for="tel">Telefon</label>
+      <input id="tel" required inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx">
+      <label for="islem">İşlem</label>
+      <select id="islem">
+        <option>Muayene ve kontrol</option><option>Diş taşı temizliği</option><option>Dolgu</option><option>Kanal tedavisi</option>
+        <option>Diş çekimi</option><option>İmplant görüşmesi</option><option>Ortodonti görüşmesi</option><option>Estetik görüşmesi</option>
+      </select>
+      <div class="iki">
+        <div><label for="tarih">Tarih</label><input id="tarih" type="date" required></div>
+        <div><label for="saat">Saat</label><select id="saat"></select></div>
+      </div>
+      <label class="kvkk"><input type="checkbox" id="kvkk"> KVKK aydınlatma metnini okudum; randevu için bilgilerimin işlenmesini kabul ediyorum.</label>
+      <button class="btn ana" style="width:100%;justify-content:center;margin-top:18px" id="gonder" type="submit">Randevuyu oluştur</button>
+      <div class="sonuc" id="sonuc"></div>
+    </form>
+  </div>
+</section>
+
+<section id="iletisim">
+  <h2>Bize her kanaldan ulaşın</h2>
+  <p class="acik">Instagram, e-posta, WhatsApp ya da bu sayfadaki sohbet asistanı: hepsi aynı takvime randevu verir.</p>
+</section>
+
+<footer><div>
+  <span>© Doğa Diş Kliniği · Demo sayfa</span>
+  <a class="pf" href="https://isaseyit.github.io/" title="PilotFactory">
+    <svg width="26" height="26" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1F3A"/><stop offset="1" stop-color="#14508A"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#g)"/><path d="M150 170 L270 256 L150 342" fill="none" stroke="#fff" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/><path d="M250 170 L370 256 L250 342" fill="none" stroke="#00C2B2" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    PilotFactory otomasyonu
+  </a>
+</div></footer>
+
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat@1.42.6/dist/chat.bundle.es.js';
+  // n8n adresi (demo: ngrok). Canlıda kalıcı HTTPS adresiyle değiştirilir.
+  const N8N = 'https://playmate-crushing-coastline.ngrok-free.dev';
+  const BASLIK = { 'ngrok-skip-browser-warning': '1' };
+
+  createChat({
+    webhookUrl: N8N + '/webhook/61f7e445-5cd2-5e5f-b52e-6f376949699d/chat',
+    webhookConfig: { method: 'POST', headers: BASLIK },
+    mode: 'window', loadPreviousSession: false, showWelcomeScreen: false, defaultLanguage: 'en',
+    initialMessages: ['Merhaba! Ben Defne, Doğa Diş Kliniği asistanıyım. 😊', 'Randevu almak, değiştirmek ya da klinik hakkında soru sormak için yazabilirsiniz.'],
+    i18n: { en: { title: 'Doğa Diş Kliniği', subtitle: 'Asistan Defne · genellikle birkaç saniyede yanıtlar', footer: '', getStarted: 'Yeni sohbet', inputPlaceholder: 'Mesajınızı yazın…', closeButtonTooltip: 'Kapat' } },
+  });
+  document.getElementById('sohbetAc').addEventListener('click', () => {
+    const t = document.querySelector('.chat-window-toggle'); if (t) t.click();
+  });
+
+  // saat listesi ve tarih
+  const saat = document.getElementById('saat');
+  for (let h = 9; h < 18; h++) for (const m of ['00', '30']) {
+    const v = String(h).padStart(2, '0') + ':' + m; const o = document.createElement('option'); o.value = o.textContent = v; saat.appendChild(o);
+  }
+  const tarih = document.getElementById('tarih');
+  const yarin = new Date(Date.now() + 864e5); tarih.min = new Date().toISOString().slice(0, 10); tarih.value = yarin.toISOString().slice(0, 10);
+
+  // form: n8n form uç noktasına gönder, sonuç sayfasını okuyup burada göster
+  const form = document.getElementById('randevuFormu'), sonuc = document.getElementById('sonuc'), btn = document.getElementById('gonder');
+  const goster = (tur, baslik, metin) => { sonuc.className = 'sonuc ' + tur; sonuc.innerHTML = '<b></b><span></span>'; sonuc.querySelector('b').textContent = baslik; sonuc.querySelector('span').textContent = metin; };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const ad = document.getElementById('ad').value.trim(), tel = document.getElementById('tel').value.trim();
+    if (ad.length < 3 || tel.replace(/\D/g, '').length < 10) return goster('hata', 'Eksik bilgi', 'Lütfen ad soyad ve en az 10 haneli telefon yazın.');
+    if (!document.getElementById('kvkk').checked) return goster('hata', 'Onay gerekli', 'Devam etmek için KVKK onayını işaretleyin.');
+    btn.disabled = true; btn.textContent = 'Kontrol ediliyor…';
+    try {
+      const fd = new FormData();
+      [ad, tel, document.getElementById('islem').value, tarih.value, saat.value, 'Evet'].forEach((v, i) => fd.append('field-' + i, v));
+      const kes = new AbortController(); const zaman = setTimeout(() => kes.abort(), 45000);
+      const r = await fetch(N8N + '/form/doga-dis-randevu', { method: 'POST', body: fd, headers: BASLIK, signal: kes.signal });
+      const j = await r.json();
+      const sayfa = await (await fetch(j.formWaitingUrl, { headers: BASLIK, signal: kes.signal })).text();
+      clearTimeout(zaman);
+      const doc = new DOMParser().parseFromString(sayfa, 'text/html');
+      const b = (doc.querySelector('h1') || {}).textContent || 'İşlem tamamlandı';
+      const m = (doc.querySelector('p') || {}).textContent || '';
+      goster(/oluşturuldu/i.test(b) ? 'ok' : 'hata', b.trim(), m.trim());
+    } catch (err) {
+      goster('hata', 'Şu an bağlanılamadı', 'Lütfen biraz sonra tekrar deneyin ya da kliniği arayın.');
+    } finally { btn.disabled = false; btn.textContent = 'Randevuyu oluştur'; }
+  });
+</script>
+</body>
+</html>
