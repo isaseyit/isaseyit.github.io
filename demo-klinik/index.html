@@ -191,11 +191,20 @@
     try {
       const fd = new FormData();
       [ad, tel, document.getElementById('islem').value, tarih.value, saat.value, 'Evet'].forEach((v, i) => fd.append('field-' + i, v));
-      const kes = new AbortController(); const zaman = setTimeout(() => kes.abort(), 45000);
-      const r = await fetch(N8N + '/form/doga-dis-randevu', { method: 'POST', body: fd, headers: BASLIK, signal: kes.signal });
+      const r = await fetch(N8N + '/form/doga-dis-randevu', { method: 'POST', body: fd, headers: BASLIK, signal: AbortSignal.timeout(20000) });
       const j = await r.json();
-      const sayfa = await (await fetch(j.formWaitingUrl, { headers: BASLIK, signal: kes.signal })).text();
-      clearTimeout(zaman);
+      // n8n sonuç sayfası akış bitince hazır olur; çalışırken gelen istek askıda kalır.
+      // Bu yüzden kısa süreli isteklerle (en çok ~60 sn) yeniden sorulur.
+      let sayfa = '';
+      for (let deneme = 0; deneme < 15 && !sayfa; deneme++) {
+        await new Promise(ok => setTimeout(ok, deneme ? 2500 : 4000));
+        try {
+          const y = await fetch(j.formWaitingUrl, { headers: BASLIK, signal: AbortSignal.timeout(3500) });
+          const t = await y.text();
+          if (y.ok && /<h1/i.test(t)) sayfa = t;
+        } catch (_) { /* henüz hazır değil */ }
+      }
+      if (!sayfa) throw new Error('zaman aşımı');
       const doc = new DOMParser().parseFromString(sayfa, 'text/html');
       const b = (doc.querySelector('h1') || {}).textContent || 'İşlem tamamlandı';
       const m = (doc.querySelector('p') || {}).textContent || '';
